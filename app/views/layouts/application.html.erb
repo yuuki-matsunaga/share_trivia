@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ShareTrivia</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="col-12">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <%= link_to "LOGO", root_path, class:"navbar-brand col-3" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <% if user_signed_in? %>
+        <h6 class="col-3">ようこそ<%= current_user.name %>さん！</h6>
+        <div class="col-6">
+          <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto row">
+              <%= link_to "マイページ", root_path,class: 'nav-item nav-link' %>
+              <%= link_to "お気に入り一覧", root_path,class: "nav-item nav-link" %>
+              <%= link_to "フォローリスト", root_path, class: "nav-item nav-link" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-item nav-link' %>
+            </div>
+          </div>
+          <% else %>
+          <h6 class="col-3">ログインまたは新規登録してください</h6>
+          <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto row">
+              <%= link_to "About", root_path, class:'nav-item nav-link' %>
+              <%= link_to "投稿一覧", root_path,class: "nav-item nav-link" %>
+              <%= link_to "新規登録", new_user_registration_path, class:'nav-item nav-link' %>
+              <%= link_to "ログイン", new_user_session_path, class:'nav-item nav-link' %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+
+    <%= yield %>
+  </body>
+</html>
