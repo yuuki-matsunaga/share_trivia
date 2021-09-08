@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to:"homes#top"
   get 'about' => 'homes#about'
-  resources :users
+  get 'users/confirm' => 'users#confirm'
+  patch 'users/withdraw' => 'users#withdraw'
+  resources :users, only: [:index,:show, :edit, :update]
   resources :posts
   resources :genres
   resources :likes

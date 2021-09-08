@@ -1,0 +1,13 @@
+<div class="container p-5">
+  <div class="row p-5">
+    <div class="mx-auto">
+      <div class="mx-auto text-center">
+        <h4>本当に退会しますか？</h4>
+        <br>
+        <p>退会するとログインできなくなり全ての機能が利用できなくなります。</p>
+        <p>退会する場合は、「退会する」をクリックしてください。</p>
+        <%= link_to '退会しない', user_path(current_user), class:"btn btn-outline-primary" %>
+        <%= link_to '退会する', users_withdraw_path, method: :patch, class:"btn btn-outline-danger" %>
+      </div>
+    </div>
+  </div>
