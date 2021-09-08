@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
   <body>
@@ -21,9 +22,10 @@
         <div class="col-6">
           <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto row">
-              <%= link_to "マイページ", root_path,class: 'nav-item nav-link' %>
+              <%= link_to "マイページ", user_path(current_user),class: 'nav-item nav-link' %>
               <%= link_to "お気に入り一覧", root_path,class: "nav-item nav-link" %>
               <%= link_to "フォローリスト", root_path, class: "nav-item nav-link" %>
+              <%= link_to "雑学を探す", root_path,class: "nav-item nav-link" %>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-item nav-link' %>
             </div>
           </div>
@@ -31,7 +33,7 @@
           <h6 class="col-3">ログインまたは新規登録してください</h6>
           <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto row">
-              <%= link_to "About", root_path, class:'nav-item nav-link' %>
+              <%= link_to "About", about_path, class:'nav-item nav-link' %>
               <%= link_to "投稿一覧", root_path,class: "nav-item nav-link" %>
               <%= link_to "新規登録", new_user_registration_path, class:'nav-item nav-link' %>
               <%= link_to "ログイン", new_user_session_path, class:'nav-item nav-link' %>

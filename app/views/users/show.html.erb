@@ -1,0 +1,66 @@
+<div class="container p-5">
+  <h4>ユーザー詳細ページ</h4>
+  <div class="row p-5">
+    <div class="col">
+      <%= image_tag('no_image.jpg') %>
+      <p>一言コメント</p>
+      <%= @user.comment %>
+      <% if @user == current_user %>
+      <%= link_to "編集する", edit_user_path(@user),class:"btn btn-outline-secondary" %>
+      <% end %>
+    </div>
+    <div class="col">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th scope="row">ユーザー名</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">ユーザーレベル</th>
+            <td><%= @user.level %></td>
+          </tr>
+          <tr>
+            <th scope="row">総獲得経験値</th>
+            <td><%= @user.exp %></td>
+          </tr>
+          <tr>
+            <th scope="row">投稿数</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">フォロー数</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">フォロワー数</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row p-5">
+    <div class="col">
+      <h4>投稿一覧</h4>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col-2">タイトル</th>
+            <th scope="col-6">本文</th>
+            <th scope="col-2">ジャンル</th>
+            <th scope="col-2">いいね数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mark</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
