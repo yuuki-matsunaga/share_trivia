@@ -23,6 +23,7 @@
           <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto row">
               <%= link_to "マイページ", user_path(current_user),class: 'nav-item nav-link' %>
+              <%= link_to "投稿する", new_post_path,class: 'nav-item nav-link' %>
               <%= link_to "お気に入り一覧", root_path,class: "nav-item nav-link" %>
               <%= link_to "ユーザー一覧", users_path, class: "nav-item nav-link" %>
               <%= link_to "雑学を探す", root_path,class: "nav-item nav-link" %>
