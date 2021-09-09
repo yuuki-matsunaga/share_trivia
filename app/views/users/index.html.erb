@@ -1,1 +1,36 @@
-<h2>ユーザー一覧</h2>
+<div class="container p-5">
+  <h2>ユーザー一覧</h2>
+  <div class="row p-5">
+    <div class="col">
+      <table class="table table-borderless text-center">
+        <thead>
+          <tr>
+            <th scope="col-2">ユーザー名</th>
+            <th scope="col-2">レベル</th>
+            <th scope="col-2">投稿数</th>
+            <th scope="col-2">ユーザー情報</th>
+            <th scope="col-2">フォロー</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @users.each do |user| %>
+              <td>
+                <%= attachment_image_tag user.image, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
+                <%= link_to user.name, user_path(user.id) %>
+              </td>
+              <td><%= user.level %></td>
+              <td></td>
+              <% if user.is_active == true %>
+              <td>アクティブ</td>
+              <td>＋フォロー</td>
+              <% else %>
+              <td>退会済</td>
+              <% end %>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
