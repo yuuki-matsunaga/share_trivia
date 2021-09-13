@@ -4,7 +4,6 @@
     <title>ShareTrivia</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -24,9 +23,8 @@
             <div class="navbar-nav ml-auto row">
               <%= link_to "マイページ", user_path(current_user),class: 'nav-item nav-link' %>
               <%= link_to "投稿する", new_post_path,class: 'nav-item nav-link' %>
-              <%= link_to "お気に入り一覧", root_path,class: "nav-item nav-link" %>
               <%= link_to "ユーザー一覧", users_path, class: "nav-item nav-link" %>
-              <%= link_to "雑学を探す", root_path,class: "nav-item nav-link" %>
+              <%= link_to "雑学を探す", posts_path,class: "nav-item nav-link" %>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-item nav-link' %>
             </div>
           </div>

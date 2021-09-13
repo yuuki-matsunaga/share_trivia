@@ -1,0 +1,12 @@
+<div class="container p-5">
+  <h4 class="p-5">ジャンル編集</h4>
+  <div class="row p-5">
+    <div class="col-6">
+      <%= form_with model: @genre, url: genre_path(@genre), local:true do |f| %>
+        ジャンル名
+        <%= f.text_field :name %>
+        <%= f.submit '変更を保存', class:"btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

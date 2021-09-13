@@ -12,6 +12,7 @@
           <%= f.attachment_field :image, placeholder: "イメージ画像" %><br>
           <label for="genre" class="co-2 col-form-label">ジャンル</label>
           <%= f.collection_select :genre_id, Genre.all, :id, :name, class:"btn btn-info form-control", prompt: "--選択してください--" %><br>
+          <p>ジャンルが無い場合はこちら<%= link_to "ジャンル一覧",genres_path %></p>
           <%= f.submit '投稿',class:"btn btn-outline-success form-control col-8" %>
         <% end %>
       </form>

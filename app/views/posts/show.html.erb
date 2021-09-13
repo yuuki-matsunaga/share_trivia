@@ -1,0 +1,35 @@
+<div class="container p-5">
+  <h4>投稿詳細ページ</h4>
+  <div class="row p-5">
+    <div class="col">
+      <table class="table table-border">
+        <tbody>
+          <tr>
+            <th scope="row">投稿ユーザー名</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">投稿ユーザーレベル</th>
+            <td><%= @user.level %></td>
+          </tr>
+          <tr>
+            <th scope="row">雑学タイトル</th>
+            <td><%= @post.title %></td>
+          </tr>
+          <tr>
+            <th scope="row">雑学内容</th>
+            <td><%= @post.introduction</td>
+          </tr>
+          <tr>
+            <th scope="row">いいねする</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">お気に入り登録する</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

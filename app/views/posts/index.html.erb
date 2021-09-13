@@ -2,7 +2,32 @@
   <h4>雑学一覧ページ</h4>
   <div class="row p-5">
     <div class="col">
-
+      <% @posts.each do |post| %>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th scope="row">ユーザー名</th>
+            <td><%= post.user.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">ユーザーレベル</th>
+            <td><%= post.user.level %></td>
+          </tr>
+          <tr>
+            <th scope="row">タイトル</th>
+            <td><%= post.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">ジャンル名</th>
+            <td><%= post.genre %></td>
+          </tr>
+          <tr>
+            <th scope="row">いいね数</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
     </div>
   </div>
 </div>
