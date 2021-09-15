@@ -13,10 +13,13 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-
-  resources :posts
   resources :genres,only: [:index,:create,:edit,:update]
-  resources :likes
-  resources :favorites
+
+  resources :posts do
+    resources :comments, only: [:create, :destroy]#コメント機能
+  end
+
+  resources :goods,only: [:create,:destroy] #いいね機能
+  resources :favorites,only: [:create,:destroy] #お気に入り機能
 
 end

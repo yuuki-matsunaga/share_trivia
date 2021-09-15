@@ -1,31 +1,39 @@
 <div class="container p-5">
-  <h2>ユーザー一覧</h2>
+  <div class="row">
+    <div class="col">
+      <h2>ユーザー一覧</h2>
+    </div>
+    <div class="col">
+      <%= search_form_for @q do |f| %>
+      <%= f.label :name, "キーワード検索" %>
+      <%= f.search_field :name_cont, placeholder: "ユーザー名で検索" %>
+      <%= f.submit "検索" %>
+      <% end %>
+    </div>
+  </div>
   <div class="row p-5">
     <div class="col">
       <table class="table table-borderless text-center">
         <thead>
           <tr>
             <th scope="col-2">ユーザー名</th>
-            <th scope="col-2">レベル</th>
-            <th scope="col-2">投稿数</th>
-            <th scope="col-2">ユーザー情報</th>
+            <th scope="col-2"><%= sort_link(@q, :level, "レベル順") %></th>
+            <th scope="col-2"><%= sort_link(@q, :post, "投稿数順") %></th>
+            <th scope="col-2"><%= sort_link(@q, :post, "フォロワー数順") %></th>
             <th scope="col-2">フォロー</th>
+            <th scope="col-2">ユーザー情報</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <% @users.each do |user| %>
+            <% @user.each do |user| %>
               <td>
                 <%= attachment_image_tag user.image, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
                 <%= link_to user.name, user_path(user.id) %>
               </td>
               <td><%= user.level %></td>
-              <td></td>
-              <% if user.is_active == true %>
-              <td>アクティブ</td>
-               <% else %>
-              <td>退会済</td>
-              <% end %>
+              <td><%= user.posts.count %></td>
+              <td><%= user.followers.count %></td>
               <td>
                 <% if current_user.following?(user) %>
                   <%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, class: "btn btn-outline-primary" %>
@@ -33,6 +41,12 @@
                   <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-primary" %>
                 <% end %>
               </td>
+              <% if user.is_active == true %>
+              <td class="text-success">アクティブ</td>
+               <% else %>
+              <td class="text-danger">退会済</td>
+              <% end %>
+              <td>
             <% end %>
           </tr>
         </tbody>

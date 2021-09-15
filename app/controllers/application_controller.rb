@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
+  helper_method :logged_in?
+
+  private
+
+  def logged_in?
+    session[:user_id].present?
+  end
+
 end

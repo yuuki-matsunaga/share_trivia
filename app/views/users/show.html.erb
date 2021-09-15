@@ -26,15 +26,15 @@
           </tr>
           <tr>
             <th scope="row">投稿数</th>
-            <td></td>
+            <td><%= @user.posts.count %></td>
           </tr>
           <tr>
             <th scope="row">フォロー数</th>
-            <td><%= @user.followings.count %></td>
+            <td><%= link_to @user.followings.count, user_followings_path(@user) %></td>
           </tr>
           <tr>
             <th scope="row">フォロワー数</th>
-            <td><%= @user.followers.count %></td>
+            <td><%= link_to @user.followers.count, user_followers_path(@user) %></td>
           </tr>
           <tr>
             <th scope="row">登録状態</th>
@@ -54,19 +54,23 @@
       <table class="table table-borderless">
         <thead>
           <tr>
-            <th scope="col-2">タイトル</th>
-            <th scope="col-6">本文</th>
-            <th scope="col-2">ジャンル</th>
-            <th scope="col-2">いいね数</th>
+            <th scope="col-3">タイトル</th>
+            <th scope="col-3">ジャンル</th>
+            <th scope="col-3">投稿日</th>
+            <th scope="col-3">いいね</th>
+            <th scope="col-3">コメント</th>
           </tr>
         </thead>
         <tbody>
+          <% @user.posts.each do |post| %>
           <tr>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td><%= link_to post.title, post_path(post) %></td>
+            <td><%= post.genre.name %></td>
+            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= post.goods.count %><i class="fas fa-heart pl-2"></i></td>
+            <td><%= post.comments.count %>件</td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

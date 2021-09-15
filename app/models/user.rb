@@ -11,8 +11,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :posts, dependent: :destroy
+  has_many :goods, dependent: :destroy
+  has_many :good_posts, through: :goods, source: :post
 
   #フォロー機能
   # 被フォロー関係を通じて参照→followed_idをフォローしている人
@@ -29,9 +29,11 @@ class User < ApplicationRecord
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
+
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
   end
+
   def following?(user)
     followings.include?(user)
   end

@@ -2,31 +2,80 @@
   <h4>投稿詳細ページ</h4>
   <div class="row p-5">
     <div class="col">
-      <table class="table table-border">
+      <table class="table table-borderless">
         <tbody>
           <tr>
-            <th scope="row">投稿ユーザー名</th>
-            <td><%= @user.name %></td>
+            <th scope="row">ユーザー名</th>
+            <td scope="row"><%= attachment_image_tag @user, :image, :fill, 30, 30, fallback: "no_image.jpg" %> <%= @user.name %></td>
+            <th scope="row">ユーザーレベル</th>
+            <td><%= @post.user.level %></td>
           </tr>
           <tr>
-            <th scope="row">投稿ユーザーレベル</th>
-            <td><%= @user.level %></td>
-          </tr>
-          <tr>
-            <th scope="row">雑学タイトル</th>
+            <th scope="row">タイトル</th>
             <td><%= @post.title %></td>
+            <th scope="row">投稿日</th>
+            <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <th scope="row">イメージ画像</th>
+            <td colspan="4"><%= attachment_image_tag @post, :image, :fill, 700, 600, fallback: "no_image.jpg" %></td>
           </tr>
           <tr>
             <th scope="row">雑学内容</th>
-            <td><%= @post.introduction</td>
+            <td colspan="4"><%= @post.introduction %></td>
+          </tr>
+          <% if logged_in? %> <!--ログイン確認-->
+            <% if current_user.own?(@post) %> <!--所有を確認-->
+            <tr>
+              <th scope="row col">削除・編集</th>
+              <td colspan="2">
+                <%= link_to post_path(@post), method: :delete do %>
+                  <%= icon 'far', 'trash-alt',class:"pr-5" %> <!--ゴミ箱-->
+                <% end %>
+                <%= link_to edit_post_path(@post) do %>
+                  <%= icon 'far', 'edit' %> <!--編集-->
+                <% end %>
+              </td>
+            </tr>
+            <% else %>
+            <tr>
+              <th scope="row">いいね・お気に入り</th>
+              <td colspan="2">
+                <% if current_user&.good?(@post) %> <!--すでにいいね！してるか確認-->
+                  <%= link_to good_path(current_user.goods.find_by(post: post)), method: :delete do %>
+                    <%= icon 'fa', 'heart' %> <!--ハート（黒）-->
+                  <% end %>
+                <% else %>
+                  <%= link_to goods_path(post: post), method: :post do %>
+                  <%= icon 'far', 'heart' %> <!--ハート（白）-->
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          <% end %>
+          <tr>
+            <th scope="row col">コメント件数：<%= @post.comments.count %></th>
+            <% @post.comments.each do |post_comment| %>
+              <td colspan="4"><%= attachment_image_tag post_comment.user, :image, :fill, 30, 30, fallback: "no_image.jpg" %>
+                <%= link_to post_comment.user.name, user_path(post_comment.user.id)%>
+                <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+                <% if post_comment.user == current_user %>
+                  <!--ゴミ箱-->
+                  <%= link_to post_comment_path(post_comment.post, post_comment), method: :delete do %>
+                  <%= icon 'far', 'trash-alt',class:"pl-5" %>
+                  <% end %>
+                <% end %>
+                <br><%= post_comment.comment %>
+              </td>
+            <% end %>
           </tr>
           <tr>
-            <th scope="row">いいねする</th>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row">お気に入り登録する</th>
-            <td></td>
+            <th scope="row col">コメントする</th>
+            <td colspan="4"><%= form_with(model:[@post, @comment], local: true) do |f| %>
+              <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに",class:"form-control" %>
+              <%= f.submit "コメントする",class:"btn btn-outline-secondary mt-3" %></td>
+            <% end %>
           </tr>
         </tbody>
       </table>
