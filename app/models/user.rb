@@ -41,4 +41,22 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def own?(object)
+    id == object.user_id
+  end
+
+  #いいね機能
+
+  def good(post)
+    goods.find_or_create_by(post: post)
+  end
+
+  def good?(post)
+    good_posts.include?(post)
+  end
+
+  def ungood(post)
+    good_posts.delete(post)
+  end
+
 end

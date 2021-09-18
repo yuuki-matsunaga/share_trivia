@@ -24,7 +24,7 @@
             <th scope="row">雑学内容</th>
             <td colspan="4"><%= @post.introduction %></td>
           </tr>
-          <% if logged_in? %> <!--ログイン確認-->
+          <% if signed_in? && @user != current_user %> <!--ログイン確認-->
             <% if current_user.own?(@post) %> <!--所有を確認-->
             <tr>
               <th scope="row col">削除・編集</th>
@@ -38,18 +38,18 @@
               </td>
             </tr>
             <% else %>
+
             <tr>
               <th scope="row">いいね・お気に入り</th>
+
               <td colspan="2">
+                <div id="good-button">
                 <% if current_user&.good?(@post) %> <!--すでにいいね！してるか確認-->
-                  <%= link_to good_path(current_user.goods.find_by(post: post)), method: :delete do %>
-                    <%= icon 'fa', 'heart' %> <!--ハート（黒）-->
-                  <% end %>
+                  <%= render 'goods/ungood_button', post: @post %>
                 <% else %>
-                  <%= link_to goods_path(post: post), method: :post do %>
-                  <%= icon 'far', 'heart' %> <!--ハート（白）-->
-                  <% end %>
+                  <%= render 'goods/good_button', post: @post %>
                 <% end %>
+                </div>
               </td>
             </tr>
             <% end %>

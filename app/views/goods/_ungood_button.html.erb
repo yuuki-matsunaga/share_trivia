@@ -1,0 +1,11 @@
+<%#= link_to good_path(current_user.goods.find_by(post: @post)), method: :delete, remote: true do %>
+<%= link_to good_path(@post.id), method: :delete, remote: true do %>
+  <%= icon 'fa', 'heart' %> <!--ハート（黒）-->
+  <%= @post.goods.count %>
+<% end %>
+
+<!--<style>-->
+<!--  .test {-->
+<!--    display: block;-->
+<!--  }-->
+<!--</style>-->

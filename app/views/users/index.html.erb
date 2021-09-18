@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.each do |user| %>
+          <% @users.each do |user| %>
           <tr>
 
             <td>
@@ -36,10 +36,12 @@
             <td><%= user.posts.count %></td>
             <td><%= user.followers.count %></td>
             <td>
-              <% if current_user.following?(user) %>
-                <%= render 'relationships/unfollow_button', user: user %>
-              <% else %>
-                <%= render 'relationships/follow_button', user: user %>
+              <% if signed_in? && user != current_user %>
+                <% if current_user.following?(user) %>
+                  <%= render 'relationships/unfollow_button', user: user %>
+                <% else %>
+                  <%= render 'relationships/follow_button', user: user %>
+                <% end %>
               <% end %>
             </td>
             <% if user.is_active == true %>

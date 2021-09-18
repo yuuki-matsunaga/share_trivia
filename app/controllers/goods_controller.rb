@@ -1,13 +1,16 @@
 class GoodsController < ApplicationController
 
   def create
-    @post = Post.find(params[:post])
+    @post = Post.find(params[:post][:post_id])
     current_user.good(@post)
+    # binding.pry
   end
 
   def destroy
-    @post = Like.find(params[:id]).post
+    # binding.pry
+    @post = Post.find(params[:id])
     current_user.ungood(@post)
+ 
   end
 
 end

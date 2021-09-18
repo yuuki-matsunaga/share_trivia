@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true)
-    @user = User.where.not(id: current_user.id)
+    # @user = User.where.not(id: current_user.id) <自分以外を探す>
   end
 
   def show

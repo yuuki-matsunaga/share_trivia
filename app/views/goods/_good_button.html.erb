@@ -1,0 +1,9 @@
+<%= form_with model: post, url: goods_path, method: :post do |f| %>
+
+  <%= f.hidden_field :post_id, :value => post.id %>
+  <div class="good-btn">
+     <%= f.submit :button, class: "btn" %>
+    <%= icon 'far', 'heart' %> <!--ハート（白）-->
+    <%= @post.goods.count %>
+  </div>
+<% end %>
