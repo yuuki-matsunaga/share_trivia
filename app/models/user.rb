@@ -7,6 +7,9 @@ class User < ApplicationRecord
   attachment :image
 
   validates :name, length: {minimum: 1, maximum: 10}
+  validates :comment, length:{minimum: 0, maximum: 200}
+  validates :name, presence: true
+  validates :image, presence: true
 
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy

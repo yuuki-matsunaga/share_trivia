@@ -1,5 +1,10 @@
 class Post < ApplicationRecord
 
+  validates :title, presence: true
+  validates :image, presence: true
+  validates :genre_id, presence: true
+  validates :introduction, presence: true
+
   attachment :image
 
   belongs_to :user

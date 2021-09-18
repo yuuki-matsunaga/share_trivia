@@ -10,11 +10,12 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      puts "保存に成功しました"
+      @post.user.exp += 50
+      redirect_to post_path(@post)
     else
-      puts "保存に失敗しました"
+      render :new
     end
-    redirect_to post_path(post)
+
   end
 
   def index
@@ -29,8 +30,23 @@ class PostsController < ApplicationController
     @comment.user_id = current_user.id
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_path(current_user)
   end
 
 

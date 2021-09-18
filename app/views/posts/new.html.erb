@@ -1,5 +1,11 @@
 <div class="container p-5">
   <h4>雑学新規投稿ページ</h4>
+  <% if @post.errors.any? %>
+    <%= @post.errors.count %>件のエラーが発生しました
+    <% @post.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
   <div class="row p-5">
     <div class="col">
       <%= form_with model: @post,url: posts_path, local:true do |f| %>
