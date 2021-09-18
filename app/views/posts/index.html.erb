@@ -38,7 +38,7 @@
           <% @posts.each do |post| %>
           <tr>
             <td>
-              <%= attachment_image_tag post.user, :image, :fill, 30, 30, fallback: "no_image.jpg" %>
+              <%= attachment_image_tag post.user, :image, :fill, 36, 36, fallback: "no_image.jpg" %>
               <%= link_to post.user.name, user_path(post.user_id) %>
             </td>
             <td><%= post.user.level %></td>

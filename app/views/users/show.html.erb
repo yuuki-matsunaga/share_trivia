@@ -4,7 +4,7 @@
     <div class="col">
       <%= attachment_image_tag @user, :image, size: "200x200", format: 'jpeg', fallback: "no_image.jpg" %>
       <p>一言コメント</p>
-      <%= @user.comment %>
+      <%= simple_format(@user.comment) %>
       <% if @user == current_user %>
       <%= link_to "編集する", edit_user_path(@user),class:"btn btn-outline-secondary" %>
       <% end %>

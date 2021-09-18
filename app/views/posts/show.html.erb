@@ -22,9 +22,9 @@
           </tr>
           <tr>
             <th scope="row">雑学内容</th>
-            <td colspan="4"><%= @post.introduction %></td>
+            <td colspan="4"><%= simple_format(@post.introduction) %></td>
           </tr>
-          <% if signed_in? && @user != current_user %> <!--ログイン確認-->
+          <% if signed_in? %> <!--ログイン確認-->
             <% if current_user.own?(@post) %> <!--所有を確認-->
             <tr>
               <th scope="row col">削除・編集</th>
@@ -35,6 +35,7 @@
                 <%= link_to edit_post_path(@post) do %>
                   <%= icon 'far', 'edit' %> <!--編集-->
                 <% end %>
+                <%= icon 'far', 'heart',class:"pl-5" %><%= @post.goods.count %>
               </td>
             </tr>
             <% else %>
