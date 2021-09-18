@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   #relationships は中間テーブルなので、usersモデルにネストさせる
   resources :users, only: [:index,:show,:edit, :update] do
+    get 'level_up' => 'users/level_up', as: 'level_up'
     resource :relationships, only: [:create, :destroy]
   #followingsとfollowersは一覧ページ用に定義するアクション
     get 'followings' => 'relationships#followings', as: 'followings'
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, only: [:create, :destroy]#コメント機能
-    # get 'posts_search' => 'posts#search', as: 'search'
-    match 'search' => 'items#search', via: [:get, :post]
+    get 'posts_search' => 'posts#search', as: 'search'
+    # match 'search' => 'posts#search', via: [:get, :post]
   end
 
 

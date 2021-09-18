@@ -15,8 +15,32 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      @post.user.exp += 50
+      @user = current_user
+
+      totalExp = @user.exp
+      #変数に現在のユーザーの経験値を入れる
+      totalExp += 50
+      # 得られた経験値をユーザーの経験値に加算
+
+      @user.exp = totalExp
+      #改めて、加算した経験値をuserの総経験値を示す変数に入れ直す
+      @user.update(exp: totalExp)
+      #更新の処理をさせる
+
+      @levelSetting = LevelSetting.find_by(level: @user.level + 1);
+      #レベルセッティングのモデルから、今の自分のレベルより1高いレコードを探させる。
+      #そしてそれを変数に入れる
+
+      if @levelSetting.thresold <= @user.exp
+      #探してきたレコードの閾値よりもユーザーの総経験値が高かった場合
+        @user.level = @user.level + 1
+        @user.update(level: @user.level)
+        redirect_to user_level_up_path(@user)
+      #レベルを1増やして更新
+      else
       redirect_to post_path(@post)
+      end
+
     else
       render :new
     end
