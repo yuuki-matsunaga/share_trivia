@@ -3,12 +3,20 @@
     <div class="col">
       <h4>雑学一覧ページ</h4>
     </div>
-    <div class="col">
+    <div>
       <%= search_form_for @q do |f| %>
       <%= f.label :title, "キーワード検索" %>
       <%= f.search_field :title_cont, placeholder: "タイトル名で検索" %>
       <%= f.submit "検索" %>
       <% end %>
+    </div>
+    <div class="pl-5">
+      <%= search_form_for @q do |f| %>
+        <%= f.label :genre_name, 'ジャンル検索' %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
     </div>
   </div>
 

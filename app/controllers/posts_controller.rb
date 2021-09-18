@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
 
+  def index
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
+  end
+
   def new
     @post = Post.new
     @genre = Genre.new
@@ -16,11 +21,6 @@ class PostsController < ApplicationController
       render :new
     end
 
-  end
-
-  def index
-    @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
   end
 
   def show
@@ -49,12 +49,10 @@ class PostsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-
   private
 
   def post_params
     params.require(:post).permit(:user_id, :genre_id, :title, :introduction, :image)
   end
-
 
 end
