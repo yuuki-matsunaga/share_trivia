@@ -16,12 +16,13 @@
       <table class="table table-striped text-center">
         <thead>
           <tr>
-            <th scope="col-2"><%= sort_link(@q, :name, "名前順") %></th>
-            <th scope="col-2"><%= sort_link(@q, :level, "レベル順") %></th>
-            <th scope="col-2"><%= sort_link(@q, :post, "投稿数順") %></th>
-            <th scope="col-2"><%= sort_link(@q, :post, "フォロワー数順") %></th>
-            <th scope="col-2">フォロー</th>
-            <th scope="col-2">ユーザー情報</th>
+            <th>名前</th>
+            <th>レベル</th>
+            <th>投稿数</th>
+            <th>フォロワー数</th>
+            <th>フォロー数</th>
+            <th>フォローorフォローを外す</th>
+            <th>ユーザー情報</th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@
             <td><%= user.level %></td>
             <td><%= user.posts.count %></td>
             <td><%= user.followers.count %></td>
+            <td><%= user.followings.count %></td>
             <td>
               <% if signed_in? && user != current_user %>
                 <% if current_user.following?(user) %>
@@ -41,6 +43,8 @@
                 <% else %>
                   <%= render 'relationships/follow_button', user: user %>
                 <% end %>
+              <% else %>
+                <p>マイアカウント</p>
               <% end %>
             </td>
             <% if user.is_active == true %>

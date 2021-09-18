@@ -17,7 +17,8 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, only: [:create, :destroy]#コメント機能
-    get 'posts_search' => 'posts#search', as: 'search'
+    # get 'posts_search' => 'posts#search', as: 'search'
+    match 'search' => 'items#search', via: [:get, :post]
   end
 
 
