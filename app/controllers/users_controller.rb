@@ -2,15 +2,14 @@ class UsersController < ApplicationController
 
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
+    @users = @q.result(distinct: true).page(params[:page]).per(5)
   end
 
   def show
     @user = User.find(params[:id])
-
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).reverse_order.per(5)
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    @favorite_list = Post.find(favorites)     # postsテーブルから、お気に入り登録済みのレコードを取得
+    @favorite_list = Post.find(favorites) # postsテーブルから、お気に入り登録済みのレコードを取得
   end
 
   def edit
