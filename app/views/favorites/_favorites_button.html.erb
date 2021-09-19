@@ -1,0 +1,13 @@
+<div id="favorite_(id: @post.id)">
+  <% if !Favorite.exists?(user: current_user, post_id: @post.id) %>
+    <%= link_to post_favorites_path(@post), method: :post, remote: true, class: "favorite-btn favorite-post" do %>
+      <i class="far fa-star"></i>
+      <span><%= @post.favorites.count %></span>
+    <% end %>
+  <% else %>
+    <%= link_to post_favorites_path(@post), method: :delete, remote: true, class: "favorite-btn favorite-delete" do %>
+      <i class="fas fa-star"></i>
+      <span><%= @post.favorites.count %></span>
+    <% end %>
+  <% end %>
+</div>

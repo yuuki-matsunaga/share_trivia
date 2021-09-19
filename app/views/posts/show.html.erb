@@ -42,14 +42,18 @@
 
             <tr>
               <th scope="row">いいね・お気に入り</th>
-
-              <td colspan="2">
+              <td>
                 <div id="good-button">
-                <% if current_user&.good?(@post) %> <!--すでにいいね！してるか確認-->
-                  <%= render 'goods/ungood_button', post: @post %>
-                <% else %>
-                  <%= render 'goods/good_button', post: @post %>
-                <% end %>
+                  <% if current_user&.good?(@post) %> <!--すでにいいね！してるか確認-->
+                    <%= render 'goods/ungood_button', post: @post %>
+                  <% else %>
+                    <%= render 'goods/good_button', post: @post %>
+                  <% end %>
+                </div>
+              </td>
+              <td>
+                <div id="favorite_(id: @post.id)">
+                  <%= render 'favorites/favorites_button' %>
                 </div>
               </td>
             </tr>

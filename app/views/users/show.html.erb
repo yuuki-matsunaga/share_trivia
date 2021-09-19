@@ -75,4 +75,31 @@
       </table>
     </div>
   </div>
+  <div class="row p-5">
+    <div class="col">
+      <h4>お気に入り一覧</h4>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col-3">タイトル</th>
+            <th scope="col-3">ジャンル</th>
+            <th scope="col-3">投稿日</th>
+            <th scope="col-3">いいね</th>
+            <th scope="col-3">コメント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @favorite_list.each do |post| %>
+          <tr>
+            <td><%= link_to post.title, post_path(post) %></td>
+            <td><%= post.genre.name %></td>
+            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= post.goods.count %><i class="fas fa-heart pl-2"></i></td>
+            <td><%= post.comments.count %>件</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
