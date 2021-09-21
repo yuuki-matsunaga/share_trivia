@@ -36,10 +36,11 @@ class PostsController < ApplicationController
       #探してきたレコードの閾値よりもユーザーの総経験値が高かった場合
         @user.level = @user.level + 1
         @user.update(level: @user.level)
+        # binding.irb
         redirect_to user_level_up_path(@user)
       #レベルを1増やして更新
       else
-      redirect_to post_path(@post)
+        redirect_to post_path(@post)
       end
 
     else

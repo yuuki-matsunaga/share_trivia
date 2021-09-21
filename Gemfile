@@ -73,7 +73,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
 gem 'kaminari','~> 1.2.1'
-gem 'kaminari-bootstrap', '~> 3.0.1'
+# gem 'kaminari-bootstrap', '~> 3.0.1'
 
 gem "enum_help"
 gem 'rails-i18n'

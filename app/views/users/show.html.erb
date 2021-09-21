@@ -62,7 +62,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.posts.each do |post| %>
+          <% @posts.each do |post| %>
           <tr>
             <td><%= link_to post.title, post_path(post) %></td>
             <td><%= post.genre.name %></td>
@@ -101,7 +101,7 @@
           <% end %>
         </tbody>
       </table>
-      <%#= paginate %>
+      <%= paginate @favorite_list %>
     </div>
   </div>
 </div>

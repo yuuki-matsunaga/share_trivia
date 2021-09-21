@@ -5,7 +5,4 @@ class HomesController < ApplicationController
     @posts = @q.result(distinct: true)
   end
 
-  def about
-  end
-
 end

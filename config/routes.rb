@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   #relationships は中間テーブルなので、usersモデルにネストさせる
   resources :users, only: [:index,:show,:edit, :update] do
-    get 'level_up' => 'users/level_up', as: 'level_up'
+    get 'level_up' => 'users#level_up', as: 'level_up'
     get :favorites, on: :collection
   #マイページのルーティングにネスト
 

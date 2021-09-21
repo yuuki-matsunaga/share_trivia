@@ -1,12 +1,14 @@
-<div class="container p-5">
-  <div class="row p-5">
-    <div class="col">
-      <h1>おめでとうございます！</h1>
-      <p>レベルアップしました！！</p>
-      <%= image_tag('/share_trivia/app/assets/images/001f8780f1bf96e92bfc1d4b9c5517c3.jpeg') %>
+<div class="container p-3">
+  <div class="row p-3">
+    <div class="mx-auto">
+      <h1 class="text-center">おめでとうございます！</h1>
+      <p class="text-center">レベルアップしました！！</p>
+      <%= image_tag('001f8780f1bf96e92bfc1d4b9c5517c3.jpeg') %>
     </div>
-    <%= link_to :back do %>
-      <button>戻る</button>
-    <% end %>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= link_to "雑学一覧ページへ",posts_path,class:"btn btn-outline-secondary" %>
+    </div>
   </div>
 </div>
