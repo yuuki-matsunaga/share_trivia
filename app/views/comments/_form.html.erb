@@ -1,0 +1,6 @@
+
+<!-- コメント入力フォーム ------------------------------------------------------------>
+<%= form_with(model: [post, comment]) do |f| %>
+    <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに", class: "form-control" %>
+    <%= f.submit "コメントする", class: "btn btn-outline-secondary mt-3" %>
+<% end %>

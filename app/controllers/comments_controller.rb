@@ -5,12 +5,12 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
     @comment.save
-    redirect_to post_path(@post)
+    render :index
   end
 
   def destroy
     Comment.find_by(id: params[:id]).destroy
-    redirect_to post_path(params[:post_id])
+    render :index
   end
 
 

@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).page(params[:page]).per(10)
-
   end
 
   def new
@@ -54,6 +53,7 @@ class PostsController < ApplicationController
     @user = User.find(@post.user_id)
     @comment = Comment.new
     @comment.user_id = current_user.id
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   def edit

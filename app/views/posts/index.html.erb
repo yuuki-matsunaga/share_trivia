@@ -10,18 +10,14 @@
       <%= f.submit "検索" %>
       <% end %>
     </div>
-
-    <!--ジャンル検索実装に間に合わなかったので改めて挑戦する-->
-
-    <!--<div class="pl-5">-->
-    <!--  <%#= search_form_for @q do |f| %>-->
-    <!--    <%#= f.label :genre_name, 'ジャンル検索' %>-->
-    <!--    <%#= f.collection_select :genre_id, Genre.all, :id, :name %>-->
-    <!--    <%#= f.submit '検索' %>-->
-    <!--  <%# end %>-->
-    <!--</div>-->
+    <div class="pl-5">
+      <%= search_form_for @q do |f| %>
+        <%= f.label :genre_name, 'ジャンル検索' %>
+        <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, include_blank: '指定なし' %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
   </div>
-
   <div class="row p-5">
     <div class="col">
       <table class="table table-borderless text-center">
@@ -33,7 +29,7 @@
             <th>ジャンル</th>
             <th><%= sort_link(@q, :created_at, "投稿日順") %></th>
             <th><%= sort_link(@q, :goods_count, "いいね順") %></th>
-            <th><%= sort_link(@q, :comment_count, "コメント順") %></th>
+            <th>コメント</th>
           </tr>
         </thead>
         <tbody>

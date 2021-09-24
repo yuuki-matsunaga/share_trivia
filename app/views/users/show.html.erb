@@ -50,7 +50,7 @@
   </div>
   <div class="row p-5">
     <div class="col">
-      <h4>投稿一覧</h4>
+      <h4>投稿一覧（<%= @posts.total_count %>件）</h4>
       <table class="table table-borderless">
         <thead>
           <tr>
@@ -78,7 +78,7 @@
   </div>
   <div class="row p-5">
     <div class="col">
-      <h4>お気に入り一覧</h4>
+      <h4>お気に入り一覧（<%= @favorite_list.total_count %>件）</h4>
       <table class="table table-borderless">
         <thead>
           <tr>
