@@ -44,7 +44,7 @@
                  <div id="follow-button-<%= user.id %>"><%= render 'relationships/follow_button', user: user %></div>
                 <% end %>
               <% else %>
-                <p>マイアカウント</p>
+                <i class="fas fa-user-alt", style="font-size: 2em;"></i>
               <% end %>
             </td>
             <% if user.is_active == true %>
