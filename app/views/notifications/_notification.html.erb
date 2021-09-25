@@ -1,0 +1,36 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="form-inline">
+        <span class="strong">
+          <%= link_to user_path(visitor) do %>
+            <%= attachment_image_tag visitor, :image, size: "36x36", format: 'jpeg', fallback: "no_image.jpg",class:"rounded-circle" %>
+            <%= visitor.name %>
+          <% end %>さんが、
+        </span>
+        <% case notification.action %>
+          <% when 'follow' then %>
+            <p class="mb-0">あなたをフォローしました</p>
+          <% when 'good' then %>
+            <%= link_to 'あなたの投稿', notification.post, class:"font-weight-bold" %>
+            <p class="mb-0">にいいね<span><i class="fas fa-heart"></i></span>しました</p>
+          <% when 'comment' then %>
+            <% if notification.post.user_id == visited.id %>
+              <%= link_to "あなたの投稿", notification.post, class:"font-weight-bold" %>
+            <% else %>
+              <%= link_to post_path(notification.post) do %>
+                <%= attachment_image_tag notification.post.user, :image, size: "36x36", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
+                <%= notification.post.user.name + 'さんの投稿' %>
+              <% end %>
+            <% end %>
+            <p class="mb-0">にコメントしました</p>
+          <% end %>
+      </div>
+      <p class="text-muted mb-0"><%= Comment.find_by(id: notification.comment_id)&.comment %></p>
+      <div class="small text-muted text-right"><%= time_ago_in_words(notification.created_at).upcase %></div>
+    </div>
+  </div>
+</div>

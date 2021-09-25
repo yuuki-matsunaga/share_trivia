@@ -12,31 +12,53 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <%= link_to image_tag("share_trivia_logo.png", class:"navbar-brand"), "/" %>
+        <%= link_to image_tag("share_trivia_logo.png", class:"navbar-brand ml-5"), "/" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <% if user_signed_in? %>
-        <h6 class="col-3">ようこそ<%= current_user.name %>さん！</h6>
-        <div class="col-6">
+        <div class="col mr-5">
           <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto row">
-              <%= link_to "マイページ", user_path(current_user),class: 'nav-item nav-link' %>
-              <%= link_to "投稿する", new_post_path,class: 'nav-item nav-link' %>
-              <%= link_to "ユーザーリスト", users_path, class: "nav-item nav-link" %>
-              <%= link_to "雑学リスト", posts_path,class: "nav-item nav-link" %>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-item nav-link' %>
+              <%= link_to attachment_image_tag(current_user, :image, :fill, 36, 36, fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user),class: 'nav-item nav-link' %>
+              <%= link_to notifications_path, class: "nav-item nav-link pt-3 m-2" do %>
+                <% if unchecked_notifications.any? %>
+                  <span class="fa-stack">
+                    <i class="far fa-bell fa-lg fa-stack-2x"></i>
+                    <i class="fas fa-circle n-circle fa-stack-1x"></i>
+                  </span>
+                <% else %>
+                  <i class="far fa-bell fa-lg", style="font-size: 2em;"></i>
+                <% end %>
+              <% end %>
+              <%= link_to new_post_path,class: 'nav-item nav-link m-2' do %>
+              <i class="fas fa-share-square", style="font-size: 2em;"></i>
+              <% end %>
+              <%= link_to users_path, class: "nav-item nav-link m-2" do %>
+              <i class="fas fa-users", style="font-size: 2em;"></i>
+              <% end %>
+              <%= link_to posts_path,class: "nav-item nav-link m-2" do %>
+              <i class="fas fa-book-open", style="font-size: 2em;"></i>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete,class: 'nav-item nav-link m-2' do %>
+              <i class="fas fa-sign-out-alt", style="font-size: 2em;"></i>
+              <% end %>
             </div>
           </div>
-          <% else %>
-          <h6 class="col-3">ログインまたは新規登録してください</h6>
+        <% else %>
+        <div class="col mr-5">
           <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto row">
-              <%= link_to "新規登録", new_user_registration_path, class:'nav-item nav-link' %>
-              <%= link_to "ログイン", new_user_session_path, class:'nav-item nav-link' %>
+              <%= link_to new_user_registration_path, class:'nav-item nav-link m-2' do %>
+              <i class="fas fa-user-plus", style="font-size: 2em;"></i>
+              <% end %>
+              <%= link_to new_user_session_path, class:'nav-item nav-link m-2' do %>
+              <i class="fas fa-sign-in-alt", style="font-size: 2em;"></i>
+              <% end %>
             </div>
           </div>
-          <% end %>
+        </div>
+        <% end %>
         </div>
       </nav>
     </header>

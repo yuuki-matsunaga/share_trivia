@@ -29,7 +29,7 @@
           <% @users.each do |user| %>
           <tr>
             <td>
-              <%= attachment_image_tag user, :image, size: "36x36", format: 'jpeg', fallback: "no_image.jpg" %>
+              <%= attachment_image_tag user, :image, size: "36x36", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
               <%= link_to user.name, user_path(user.id) %>
             </td>
             <td><%= user.level %></td>
@@ -39,9 +39,9 @@
             <td>
               <% if signed_in? && user != current_user %>
                 <% if current_user.following?(user) %>
-                  <%= render 'relationships/unfollow_button', user: user %>
+                 <div id="follow-button-<%= user.id %>"><%= render 'relationships/unfollow_button', user: user %></div>
                 <% else %>
-                  <%= render 'relationships/follow_button', user: user %>
+                 <div id="follow-button-<%= user.id %>"><%= render 'relationships/follow_button', user: user %></div>
                 <% end %>
               <% else %>
                 <p>マイアカウント</p>

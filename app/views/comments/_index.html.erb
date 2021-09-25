@@ -1,9 +1,8 @@
-<!-- コメント内容(２件) ------------------------------------------------------------------>
 <% comments.each do |comment| %>
   <% unless comment.id.nil? %>
     <div>
       <div>
-        <%= attachment_image_tag comment.user, :image, fallback: "no_image.jpg", class:"comment-image", size: "36x36" %>
+        <%= attachment_image_tag comment.user, :image, fallback: "no_image.jpg", class:"comment-image", size: "36x36", class:"rounded-circle" %>
         <%= link_to comment.user.name, user_path(comment.user.id) %>
         <% if comment.user == current_user %>
           <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>

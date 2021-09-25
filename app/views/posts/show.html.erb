@@ -6,7 +6,7 @@
         <tbody>
           <tr>
             <th class="col-2">ユーザー名</th>
-            <td class="col-6"><%= attachment_image_tag @user, :image, size: "36x36", fallback: "no_image.jpg" %> <%= @user.name %></td>
+            <td class="col-6"><%= link_to attachment_image_tag(@user, :image, size: "36x36", fallback: "no_image.jpg",class:"rounded-circle"),user_path(@user) %> <%= @user.name %></td>
             <th class="col-2">ユーザーレベル</th>
             <td ckass="col-2"><%= @post.user.level %></td>
           </tr>

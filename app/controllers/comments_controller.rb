@@ -5,12 +5,15 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
     @comment.save
+    @post.create_notification_comment!(current_user, @comment.id)
+    @comments = @post.comments.order(created_at: :desc)
     render :index
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     Comment.find_by(id: params[:id]).destroy
-    render :index
+    redirect_to post_path(@post)
   end
 
 

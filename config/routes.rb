@@ -30,5 +30,7 @@ Rails.application.routes.draw do
     #検索機能用
     get 'posts_search' => 'posts#search', as: 'search'
   end
+  
+  resources :notifications, only: :index
 
 end

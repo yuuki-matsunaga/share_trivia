@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_many :goods, dependent: :destroy
   has_many :good_posts, through: :goods, source: :post
 
+  #通知機能
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy #自分からの通知
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy #相手からの通知
+
   #フォロー機能
   # 被フォロー関係を通じて参照→followed_idをフォローしている人
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -57,6 +61,22 @@ class User < ApplicationRecord
 
   def ungood(post)
     good_posts.delete(post)
+  end
+
+  #通知機能（フォロー）
+
+  #----------フォロー機能重複して通知がいかないようにする記述をコメントアウトしてます---------------------
+
+  def create_notification_follow!(current_user)
+    # temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+
+    # if true
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    # end
   end
 
 end

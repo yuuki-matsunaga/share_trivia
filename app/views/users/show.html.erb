@@ -2,7 +2,7 @@
   <h4>ユーザー詳細ページ</h4>
   <div class="row p-5">
     <div class="col">
-      <%= attachment_image_tag @user, :image, size: "200x200", format: 'jpeg', fallback: "no_image.jpg" %>
+      <%= attachment_image_tag @user, :image, size: "200x200", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
       <p>一言コメント</p>
       <%= simple_format(@user.comment) %>
       <% if @user == current_user %>
@@ -35,6 +35,17 @@
           <tr>
             <th scope="row">フォロワー数</th>
             <td><%= link_to @user.followers.count, user_followers_path(@user) %></td>
+          </tr>
+          <tr>
+            <% if signed_in? && @user != current_user %>
+              <% if current_user.following?(@user) %>
+              <th></th>
+              <td id="follow-button-<%= @user.id %>"><%= render 'relationships/unfollow_button', user: @user %></td>
+              <% else %>
+              <th></th>
+               <td id="follow-button-<%= @user.id %>"><%= render 'relationships/follow_button', user: @user %></td>
+              <% end %>
+            <% end %>
           </tr>
           <tr>
             <th scope="row">登録状態</th>
