@@ -1,3 +1,13 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jumbotron-extend {
+    position: relative;
+    height: 50vh;
+    background: url(yousyohondana.jpeg) no-repeat center center;
+}
+
+.container-fluid{
+  padding-top: 360px;
+}
