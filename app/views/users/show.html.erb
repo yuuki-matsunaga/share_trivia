@@ -87,6 +87,7 @@
       <%= paginate @posts %>
     </div>
   </div>
+  <% if @user == current_user %>
   <div class="row p-5">
     <div class="col">
       <h4>お気に入り一覧（<%= @favorite_list.total_count %>件）</h4>
@@ -115,4 +116,5 @@
       <%= paginate @favorite_list %>
     </div>
   </div>
+  <% end %>
 </div>

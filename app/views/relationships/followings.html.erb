@@ -23,7 +23,7 @@
           <% @users.each do |user| %>
           <tr>
             <td>
-              <%= attachment_image_tag user, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
+              <%= attachment_image_tag user, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
               <%= link_to user.name, user_path(user.id) %>
             </td>
             <td><%= user.level %></td>

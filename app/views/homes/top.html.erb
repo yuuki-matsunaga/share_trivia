@@ -1,15 +1,15 @@
 <div class="jumbotron jumbotron-extend">
   <div class="container-fluid row">
-    <div class="col-6 text-bold">
-      <h1>Share Triviaへようこそ<span><i class="fas fa-book-reader"></i></span></h1>
-      <p>Share Triviaは雑学の共有をするアプリです。</p>
-      <p>雑学を投稿することで経験値が貯まり、レベルアップすることができます。</p>
-      <p>このアプリを通して学んだ雑学を周りの人たちとのコミュニケーションに</p>
-      <p>役立てていただけたら幸いです。</p>
+    <div class="about col-md-6 text-bold">
+      <h2 class="about-title">Share Triviaへ<br class="tb">ようこそ<span><i class="fas fa-book-reader"></i></span></h2>
+      <p>Share Triviaは雑学の共有をするアプリです。<br class="sp">
+        雑学を投稿することで経験値が貯まり、レベルアップすることができます。<br class="sp">
+        このアプリを通して学んだ雑学を周りの人たちとのコミュニケーションに<br class="sp">
+        役立てていただけたら幸いです。</p>
     </div>
     <% if user_signed_in? %>
-    <p class="col-3 d-flex align-items-center">お帰りなさい！<%= current_user.name %>さん！</p>
-    <table class="col-3">
+    <p class="col-md-3 d-flex align-items-center">お帰りなさい！<br><%= current_user.name %>さん！</p>
+    <table class="col-md-3">
       <tr>
         <th>マイページへ <i class="far fa-hand-point-right"></i></th>
         <td><%= link_to attachment_image_tag(current_user, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user)%></td>
@@ -41,9 +41,9 @@
             <th>Google</th>
           </tr>
           <tr>
-            <td>Facebookで登録</td>
-            <td>Twitterで登録</td>
-            <td>Googleで登録</td>
+            <td><%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post %></td>
+            <td><%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, method: :post %></td>
+            <td><%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post %></td>
           </tr>
           <tr>
             <td>Facebookでログイン</td>

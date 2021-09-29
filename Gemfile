@@ -79,3 +79,9 @@ gem "enum_help"
 gem 'rails-i18n'
 
 gem 'ransack'
+
+gem 'omniauth-facebook'                  # Facebook認証
+gem 'omniauth-twitter'                   # Twitter認証
+gem 'omniauth-google-oauth2'             # Google認証
+gem 'omniauth-github'                    # GitHub認証
+gem 'dotenv-rails'                       # 環境変数の管理

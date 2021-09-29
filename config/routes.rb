@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
+
   root to:"homes#top"
   get 'about' => 'homes#about'
   get 'users/confirm' => 'users#confirm'
@@ -30,7 +36,7 @@ Rails.application.routes.draw do
     #検索機能用
     get 'posts_search' => 'posts#search', as: 'search'
   end
-  
+
   resources :notifications, only: :index
 
 end

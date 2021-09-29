@@ -10,12 +10,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
-  helper_method :logged_in?
-
   private
 
-  def logged_in?
-    session[:user_id].present?
+  def configure_permitted_parameters  # メールアドレス以外の自分で追加したカラムを許可
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
 end
