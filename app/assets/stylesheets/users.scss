@@ -1,3 +1,56 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+    border: 1px solid #858585;
+  }
+  tbody tr{
+    display: block;
+  }
+  tbody th,
+  tbody td{
+    display: list-item;
+    list-style: none;
+    border-bottom: 1px solid #858585
+  }
+
+@media screen and (min-width:768px) {
+    table {
+      border-bottom: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+    }
+    tbody tr{
+      display: table-row;
+    }
+    tbody th,
+    tbody td{
+      border-right: 1px solid #ddd;
+      display: table-cell;
+      border-bottom: none;
+    }
+    th {
+      width: auto;
+    }
+}
+
+@media screen and (max-width:425px) {
+  .column_table,.column_table td,.column_table th {
+    border: 1px solid #cbced2;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .column_table thead th {
+    display: none;
+
+  }
+
+  .column_table td[data-title]::before {
+    color: #666;
+    content: attr(data-title) " :";
+    font-weight: bold;
+    padding: 0 10px 0 0;
+    display: inline;
+  }
+}
