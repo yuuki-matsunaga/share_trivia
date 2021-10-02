@@ -2,32 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-table {
-    border: 1px solid #858585;
-  }
-  tbody tr{
-    display: block;
-  }
-  tbody th,
-  tbody td{
-    display: list-item;
-    list-style: none;
-    border-bottom: 1px solid #858585
-  }
 
+//showページのレスポンシブ
 @media screen and (min-width:768px) {
-    table {
-      border-bottom: 1px solid #ddd;
-      border-left: 1px solid #ddd;
-    }
+
     tbody tr{
       display: table-row;
+
     }
     tbody th,
     tbody td{
-      border-right: 1px solid #ddd;
       display: table-cell;
-      border-bottom: none;
     }
     th {
       width: auto;
@@ -35,22 +20,96 @@ table {
 }
 
 @media screen and (max-width:425px) {
-  .column_table,.column_table td,.column_table th {
-    border: 1px solid #cbced2;
-    border-collapse: collapse;
+  .row_table,.row_table td,.row_table th {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+  .row_table th {
+    border: 1px solid #ddd;
+    padding: 4px 12px;
+    display: none;
+    width: 100%
+  }
+
+  .row_table td {
+    border: 1px solid #ddd;
+    padding: 4px 12px;
+    display: block;
+    width: 100%;
+  }
+  .row_table td[data-title]::before {
+  content: attr(data-title) " :";
+  font-weight: bold;
+  padding: 0 10px 0 0;
+  display: inline;
+  }
+
+ tbody tr{
+    display: table-row;
+  }
+  tbody th,
+  tbody td{
+    border: 1px solid #ddd;
+    display: table-cell;
+  }
+  th {
+    width: auto;
+  }
+}
+
+//indexページのレスポンシブ
+
+@media screen and (min-width:768px) {
+
+    tbody tr{
+      display: table-row;
+
+    }
+    tbody th,
+    tbody td{
+      display: table-cell;
+    }
+    th {
+      width: auto;
+    }
+}
+
+
+
+@media screen and (max-width:425px) {
+  .column_table,
+  .column_table td,
+  .column_table th {
+    // border: 1px solid #cbced2;
+    // border-collapse: collapse;
     text-align: center;
   }
 
   .column_table thead th {
     display: none;
+  }
 
+  .column_table td {
+    padding: 4px 12px;
+    display: block;
+    width: 100%
   }
 
   .column_table td[data-title]::before {
+    background-color:white;
     color: #666;
     content: attr(data-title) " :";
     font-weight: bold;
     padding: 0 10px 0 0;
     display: inline;
   }
+
+  .container{
+    padding:0;
+    margin:0;
+  }
+
+
 }

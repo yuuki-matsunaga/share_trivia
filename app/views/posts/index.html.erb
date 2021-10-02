@@ -18,9 +18,9 @@
       <% end %>
     </div>
   </div>
-  <div class="row p-5">
+  <div class="row">
     <div class="col">
-      <table class="table table-borderless text-center">
+      <table class="column-table table table-borderless text-center">
         <thead>
           <tr>
             <th>ユーザー名</th>
@@ -39,12 +39,12 @@
               <%= attachment_image_tag post.user, :image, :fill, 36, 36, fallback: "no_image.jpg", class:"rounded-circle" %>
               <%= link_to post.user.name, user_path(post.user_id) %>
             </td>
-            <td><%= post.user.level %></td>
-            <td><%= link_to post.title, post_path(post) %></td>
-            <td><%= post.genre.name %></td>
-            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= post.goods.count %><i class="fas fa-heart pl-2"></i></td>
-            <td><%= post.comments.count %>件</td>
+            <td data-title="レベル"><%= post.user.level %></td>
+            <td data-title="タイトル"><%= link_to post.title, post_path(post) %></td>
+            <td data-title="ジャンル"><%= post.genre.name %></td>
+            <td data-title="投稿日"><%= post.created_at.strftime('%Y/%m/%d') %></td>
+            <td data-title="いいね"><%= post.goods.count %><i class="fas fa-heart pl-2"></i></td>
+            <td data-title="コメント"><%= post.comments.count %>件</td>
           </tr>
           <% end %>
         </tbody>

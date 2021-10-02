@@ -9,7 +9,7 @@
       <%= link_to "編集する", edit_user_path(@user),class:"btn btn-outline-secondary m-3" %>
       <% end %>
     </div>
-    <div class="col">
+    <div class="col-xs">
       <table class="user-status table table-striped text-center">
         <tbody>
           <tr>
@@ -62,7 +62,7 @@
   <div class="row p-5">
     <div class="col">
       <h4>投稿一覧（<%= @posts.total_count %>件）</h4>
-      <table class="table column_table table-borderless table-striped">
+      <table class="table row_table table-borderless table-striped">
         <thead>
           <tr>
             <th class="title col-4">タイトル</th>
@@ -91,7 +91,7 @@
   <div class="row p-5">
     <div class="col">
       <h4>お気に入り（<%= @favorite_list.total_count %>件）</h4>
-      <table class="table column_table table-borderless table-striped">
+      <table class="table row_table table-borderless table-striped">
         <thead>
           <tr>
             <th class="title col-4">タイトル</th>

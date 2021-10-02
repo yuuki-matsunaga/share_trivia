@@ -1,77 +1,75 @@
 <div class="container p-4">
   <h4>投稿詳細ページ</h4>
-  <div class="row p-5">
-    <div class="col">
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th class="col-2">ユーザー名</th>
-            <td class="col-6"><%= link_to attachment_image_tag(@user, :image, size: "36x36", fallback: "no_image.jpg",class:"rounded-circle"),user_path(@user) %> <%= @user.name %></td>
-            <th class="col-2">ユーザーレベル</th>
-            <td ckass="col-2"><%= @post.user.level %></td>
-          </tr>
-          <tr>
-            <th scope="row col">タイトル</th>
-            <td><%= @post.title %></td>
-            <th scope="row">投稿日</th>
-            <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-          <tr>
-            <th scope="row">イメージ画像</th>
-            <td colspan="4"><%= attachment_image_tag @post, :image, :fill, 700, 600, fallback: "no_image.jpg" %></td>
-          </tr>
-          <tr>
-            <th scope="row">雑学内容</th>
-            <td colspan="4"><%= simple_format(@post.introduction) %></td>
-          </tr>
-          <% if signed_in? %> <!--ログイン確認-->
-            <% if current_user.own?(@post) %> <!--所有を確認-->
-              <tr>
-                <th scope="row col">削除・編集</th>
-                <td colspan="2">
-                  <%= link_to post_path(@post), method: :delete do %>
-                    <%= icon 'far', 'trash-alt',class:"pr-5" %> <!--ゴミ箱-->
+  <div class="row p-4">
+    <table class="row-table table-borderless">
+      <tbody>
+        <tr>
+          <th class="col">ユーザー名</th>
+          <td class="col"><%= link_to attachment_image_tag(@user, :image, size: "36x36", fallback: "no_image.jpg",class:"rounded-circle"),user_path(@user) %> <%= @user.name %></td>
+          <th class="col">ユーザーレベル</th>
+          <td ckass="col"><%= @post.user.level %></td>
+        </tr>
+        <tr>
+          <th scope="row col">タイトル</th>
+          <td><%= @post.title %></td>
+          <th scope="row">投稿日</th>
+          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th scope="row">イメージ画像</th>
+          <td colspan="4",><%= attachment_image_tag @post, :image, :fill, 600, 600, fallback: "no_image.jpg" %></td>
+        </tr>
+        <tr>
+          <th scope="row">雑学内容</th>
+          <td colspan="4"><%= simple_format(@post.introduction) %></td>
+        </tr>
+        <% if signed_in? %> <!--ログイン確認-->
+          <% if current_user.own?(@post) %> <!--所有を確認-->
+            <tr>
+              <th scope="row col">削除・編集</th>
+              <td colspan="2">
+                <%= link_to post_path(@post), method: :delete do %>
+                  <%= icon 'far', 'trash-alt',class:"pr-5" %> <!--ゴミ箱-->
+                <% end %>
+                <%= link_to edit_post_path(@post) do %>
+                  <%= icon 'far', 'edit' %> <!--編集-->
+                <% end %>
+                <%= icon 'far', 'heart',class:"p-5" %><%= @post.goods.count %>
+              </td>
+            </tr>
+          <% else %>
+            <tr>
+              <th scope="row">いいね・お気に入り</th>
+              <td>
+                <div id="good-button">
+                  <% if current_user&.good?(@post) %> <!--すでにいいね！してるか確認-->
+                    <%= render 'goods/ungood_button', post: @post %>
+                  <% else %>
+                    <%= render 'goods/good_button', post: @post %>
                   <% end %>
-                  <%= link_to edit_post_path(@post) do %>
-                    <%= icon 'far', 'edit' %> <!--編集-->
-                  <% end %>
-                  <%= icon 'far', 'heart',class:"p-5" %><%= @post.goods.count %>
-                </td>
-              </tr>
-            <% else %>
-              <tr>
-                <th scope="row">いいね・お気に入り</th>
-                <td>
-                  <div id="good-button">
-                    <% if current_user&.good?(@post) %> <!--すでにいいね！してるか確認-->
-                      <%= render 'goods/ungood_button', post: @post %>
-                    <% else %>
-                      <%= render 'goods/good_button', post: @post %>
-                    <% end %>
-                  </div>
-                </td>
-                <td>
-                  <div id="favorite">
-                    <%= render 'favorites/favorites_button', post: @post %>
-                  </div>
-                </td>
-              </tr>
-            <% end %>
-              <tr id ="comments_area">
-                <th scope="row col">コメント：<%= @post.comments.count %>件</th>
-                <td colspan="4">
-                  <%= render partial: 'comments/index', locals: { comments: @comments, comment: @comment, post: @post } %>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row col">コメントする</th>
-                <td colspan="4">
-                  <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-                </td>
-              </tr>
+                </div>
+              </td>
+              <td>
+                <div id="favorite">
+                  <%= render 'favorites/favorites_button', post: @post %>
+                </div>
+              </td>
+            </tr>
           <% end %>
-        </tbody>
-      </table>
-    </div>
+            <tr id ="comments_area">
+              <th scope="row col">コメント：<%= @post.comments.count %>件</th>
+              <td colspan="4">
+                <%= render partial: 'comments/index', locals: { comments: @comments, comment: @comment, post: @post } %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row col">コメントする</th>
+              <td colspan="4">
+                <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+              </td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

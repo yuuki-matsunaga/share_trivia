@@ -185,7 +185,6 @@ GEM
     nokogiri (1.12.4)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    oauth (0.5.6)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -196,25 +195,17 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
       rack-protection
-    omniauth-facebook (8.0.0)
-      omniauth-oauth2 (~> 1.2)
-    omniauth-github (2.0.0)
-      omniauth (~> 2.0)
-      omniauth-oauth2 (~> 1.7.1)
     omniauth-google-oauth2 (1.0.0)
       jwt (>= 2.0)
       oauth2 (~> 1.1)
       omniauth (~> 2.0)
       omniauth-oauth2 (~> 1.7.1)
-    omniauth-oauth (1.2.0)
-      oauth
-      omniauth (>= 1.0, < 3)
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
-    omniauth-twitter (1.4.0)
-      omniauth-oauth (~> 1.1)
-      rack
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     orm_adapter (0.5.0)
     popper_js (1.16.0)
     pry (0.13.1)
@@ -364,10 +355,9 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 1.2.1)
   listen (>= 3.0.5, < 3.2)
-  omniauth-facebook
-  omniauth-github
+  omniauth
   omniauth-google-oauth2
-  omniauth-twitter
+  omniauth-rails_csrf_protection
   pry-byebug
   puma (~> 3.11)
   rails (~> 5.2.5)

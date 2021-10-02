@@ -9,7 +9,7 @@
     </div>
     <% if user_signed_in? %>
     <p class="col-md-3 d-flex align-items-center">お帰りなさい！<br><%= current_user.name %>さん！</p>
-    <table class="col-md-3">
+    <table class="col-md-3 table-borderless">
       <tr>
         <th>マイページへ <i class="far fa-hand-point-right"></i></th>
         <td><%= link_to attachment_image_tag(current_user, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user)%></td>
@@ -22,7 +22,7 @@
 
     <% else %>
     <div class="col p-4">
-      <table>
+      <table class="table-borderless">
         <tr>
           <th>新規登録はこちら <i class="far fa-hand-point-right"></i></th>
           <td><%= link_to "新規登録", new_user_registration_path, class:"btn btn-outline-primary col" %></td>
@@ -31,27 +31,14 @@
           <th>ログインはこちら <i class="far fa-hand-point-right"></i></th>
           <td><%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-success col" %></td>
         </tr>
+        <tr>
+          <th class="text-right">Google認証する <i class="far fa-hand-point-right"></i></th>
+          <td class="text-center"><%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
+            <i class="fab fa-google"></i>
+          <% end %>
+          </td>
+        </tr>
       </table>
-      <br>
-      <div class="row mx-auto">
-        <table>
-          <tr>
-            <th>Facebook</th>
-            <th>Twitter</th>
-            <th>Google</th>
-          </tr>
-          <tr>
-            <td><%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post %></td>
-            <td><%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, method: :post %></td>
-            <td><%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post %></td>
-          </tr>
-          <tr>
-            <td>Facebookでログイン</td>
-            <td>Twitterでログイン</td>
-            <td>Googleでログイン</td>
-          </tr>
-        </table>
-      </div>
     </div>
     <% end %>
   </div>

@@ -1,7 +1,7 @@
-<div class="container p-5">
+<div class="container p-3">
   <div class="row">
     <div class="col">
-      <h4>ユーザ一覧(全<%= User.count %>人)</h4>
+      <h4>ユーザ一覧<br>(全<%= User.count %>人)</h4>
     </div>
     <div class="col">
       <%= search_form_for @q do |f| %>
@@ -11,32 +11,32 @@
       <% end %>
     </div>
   </div>
-  <div class="row p-5">
+  <div class="row">
     <div class="col">
-      <table class="table table-striped text-center">
+      <table class="table column_table table-borderless text-center">
         <thead>
           <tr>
             <th>名前</th>
             <th>レベル</th>
             <th>投稿数</th>
-            <th>フォロワー数</th>
-            <th>フォロー数</th>
-            <th>フォローorフォローを外す</th>
+            <th>フォロワー</th>
+            <th>フォロー</th>
+            <th></th>
             <th>ユーザー情報</th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
           <tr>
-            <td>
+            <td class="sp-th">
               <%= attachment_image_tag user, :image, size: "36x36", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
               <%= link_to user.name, user_path(user.id) %>
             </td>
-            <td><%= user.level %></td>
-            <td><%= user.posts.count %></td>
-            <td><%= user.followers.count %></td>
-            <td><%= user.followings.count %></td>
-            <td>
+            <td data-title="レベル"><%= user.level %></td>
+            <td data-title="投稿数"><%= user.posts.count %></td>
+            <td data-title="フォロワー"><%= user.followers.count %></td>
+            <td data-title="フォロー"><%= user.followings.count %></td>
+            <td >
               <% if signed_in? && user != current_user %>
                 <% if current_user.following?(user) %>
                  <div id="follow-button-<%= user.id %>"><%= render 'relationships/unfollow_button', user: user %></div>
@@ -49,15 +49,15 @@
             </td>
             <% if user.is_active == true %>
             <td class="text-success">アクティブ</td>
-             <% else %>
+            <% else %>
             <td class="text-danger">退会済</td>
             <% end %>
-            <td>
+            <br>
           </tr>
           <% end %>
-          <%= paginate @users %>
         </tbody>
       </table>
+      <%= paginate @users %>
     </div>
   </div>
 </div>

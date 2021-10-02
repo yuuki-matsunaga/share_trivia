@@ -1,3 +1,97 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media screen and (max-width:1440px) {
+.row-table,
+.row-table td,
+.row-table th {
+  width: 100%;
+  border: 1px solid #cbced2;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.row-table th {
+  background: #01214d;
+  color: #fff;
+  padding: 4px 12px;
+  display: block;
+  width: 100%
+}
+
+.row-table td {
+  background: #f5f6f8;
+  padding: 4px 12px;
+  display: block;
+  width: 100%;
+}
+
+}
+
+@media screen and (max-width:768px) {
+  .row-table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+}
+
+@media screen and (max-width:425px) {
+  .row-table{
+    overflow: scroll;
+  }
+}
+
+@media screen and (min-width:768px) {
+
+    tbody tr{
+      display: table-row;
+
+    }
+    tbody th,
+    tbody td{
+      display: table-cell;
+    }
+    th {
+      width: auto;
+    }
+}
+
+
+
+@media screen and (max-width:425px) {
+  .column-table,
+  .column-table td,
+  .column-table th {
+    // border: 1px solid #cbced2;
+    // border-collapse: collapse;
+    text-align: center;
+  }
+
+  .column-table thead th {
+    display: none;
+  }
+
+  .column-table td {
+    padding: 4px 12px;
+    display: block;
+    width: 100%
+  }
+
+  .column-table td[data-title]::before {
+    // background-color:white;
+    // color: #666;
+    content: attr(data-title) " :";
+    font-weight: bold;
+    padding: 0 10px 0 0;
+    display: inline;
+  }
+
+  .container{
+    padding:0;
+    margin:0;
+  }
+
+
+}
