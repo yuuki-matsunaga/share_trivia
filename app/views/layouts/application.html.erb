@@ -21,7 +21,7 @@
         <div class="col mr-5">
           <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto row">
-              <%= link_to attachment_image_tag(current_user, :image, :fill, 36, 36, fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user),class: 'nav-item nav-link' %>
+              <%= link_to attachment_image_tag(current_user, :image, size: "50x50", fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user),class: 'nav-item nav-link' %>
               <%= link_to notifications_path, class: "nav-item nav-link pt-3 m-2" do %>
                 <% if unchecked_notifications.any? %>
                   <span class="fa-stack">
