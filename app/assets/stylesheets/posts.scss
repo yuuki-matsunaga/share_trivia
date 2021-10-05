@@ -34,12 +34,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   }
 }
 
 @media screen and (max-width:425px) {
   .row-table{
-    overflow: scroll;
+    maw-width: 100%;
+  }
+  .post-image{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
   }
 }
 

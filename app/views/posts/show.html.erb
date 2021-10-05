@@ -17,7 +17,7 @@
         </tr>
         <tr>
           <th scope="row">イメージ画像</th>
-          <td colspan="4",><%= attachment_image_tag @post, :image, :fill, 600, 600, fallback: "no_image.jpg" %></td>
+          <td colspan="4"><%= attachment_image_tag @post, :image, size: "600x600", fallback: "no_image.jpg",class:"post-image" %></td>
         </tr>
         <tr>
           <th scope="row">雑学内容</th>
@@ -40,7 +40,7 @@
           <% else %>
             <tr>
               <th scope="row">いいね・お気に入り</th>
-              <td>
+              <td class="text-center">
                 <div id="good-button">
                   <% if current_user&.good?(@post) %> <!--すでにいいね！してるか確認-->
                     <%= render 'goods/ungood_button', post: @post %>

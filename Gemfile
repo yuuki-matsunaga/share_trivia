@@ -56,6 +56,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -65,22 +66,22 @@ gem 'pry-byebug'
 
 gem 'devise'
 
+#--画像用--
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
+#---レイアウト用---
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
-
-gem 'kaminari','~> 1.2.1'
-# gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'kaminari','~> 1.2.1' #ページネーション機能
 
 gem "enum_help"
 gem 'rails-i18n'
 
-gem 'ransack'
+gem 'ransack' #検索機能
 
 gem 'omniauth-google-oauth2'  # Google認証
 gem 'omniauth'
-gem 'dotenv-rails'                       # 環境変数の管理
-gem "omniauth-rails_csrf_protection"     # csrf対策
+gem 'dotenv-rails'  # 環境変数の管理
+gem "omniauth-rails_csrf_protection"  # csrf対策
