@@ -1,5 +1,7 @@
 class RelationshipsController < ApplicationController
 
+  before_action :authenticate_user!
+
   #フォロー機能を作成・保存・削除する
   #userモデルで定義したfollow、unfollowメソッドの使用
   def create

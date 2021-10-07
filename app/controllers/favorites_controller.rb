@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     @post = Post.find(params[:post_id])
     if @post.user_id != current_user.id   # 投稿者本人以外に限定

@@ -1,5 +1,16 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update]
+
+
+  def ensure_correct_user
+    @user = User.find_by(id: params[:id])
+    if @user != current_user
+      redirect_to root_path
+    end
+  end
+
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(10)
@@ -13,12 +24,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if @user = current_user
-      render edit
-    else
-      flash[:notice]="権限がありません"
-      redirect_to root
-    end
+    @user = current_user
   end
 
   def update
