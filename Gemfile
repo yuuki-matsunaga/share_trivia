@@ -83,3 +83,7 @@ gem 'omniauth-google-oauth2'  # Google認証
 gem 'omniauth'
 gem 'dotenv-rails'  # 環境変数の管理
 gem "omniauth-rails_csrf_protection"  # csrf対策
+
+group :production do
+  gem 'mysql2'
+end
