@@ -23,16 +23,21 @@
           <th scope="row">雑学内容</th>
           <td colspan="4"><%= simple_format(@post.introduction) %></td>
         </tr>
-        <% if signed_in? %> <!--ログイン確認-->
+       
+        <% if user_signed_in? %>
+        <!--ログイン確認-->
+
+         <th scope="row">雑学内容</th>
           <% if current_user.own?(@post) %> <!--所有を確認-->
+        
             <tr>
               <th scope="row col">削除・編集</th>
               <td colspan="2">
                 <%= link_to post_path(@post), method: :delete do %>
-                  <%= icon 'far', 'trash-alt',class:"pr-5" %> <!--ゴミ箱-->
+                  <%= icon 'far', 'trash-alt',class:"trash pr-5" %> <!--ゴミ箱-->
                 <% end %>
                 <%= link_to edit_post_path(@post) do %>
-                  <%= icon 'far', 'edit' %> <!--編集-->
+                  <%= icon 'far', 'edit',class:"edit" %> <!--編集-->
                 <% end %>
                 <%= icon 'far', 'heart',class:"p-5" %><%= @post.goods.count %>
               </td>

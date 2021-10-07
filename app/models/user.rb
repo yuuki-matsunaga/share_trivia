@@ -1,13 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   attachment :image
 
-  # validates :name, length: {minimum: 1, maximum: 10}
-  # validates :name, presence: true
+  validates :name, length: {minimum: 2, maximum: 10}
+  validates :name, presence: true
 
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -79,20 +80,6 @@ class User < ApplicationRecord
 
   #google認証機能
 
-  # def self.from_omniauth(access_token)
-  #   data = access_token.info
-  #   user = User.where(email: data['email']).first
-
-
-  #   # Uncomment the section below if you want users to be created if they don't exist
-  #   unless user
-  #       user = User.create(name: data['name'],
-  #           email: data['email'],
-  #           password: Devise.friendly_token[0,20]
-  #       )
-  #   end
-
-      # omniauthのコールバック時に呼ばれるメソッド
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.email = auth.info.email

@@ -13,7 +13,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    if @user = current_user
+      render edit
+    else
+      flash[:notice]="権限がありません"
+      redirect_to root
+    end
   end
 
   def update

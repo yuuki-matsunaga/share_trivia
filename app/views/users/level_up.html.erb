@@ -9,6 +9,7 @@
   <div class="row">
     <div class="mx-auto">
       <%= link_to "マイページでレベルを確認！",user_path(current_user),class:"btn btn-outline-secondary" %>
+      <%= link_to "投稿内容を確認",post_path(current_user.posts.last),class:"btn btn-outline-secondary" %>
     </div>
   </div>
 </div>
