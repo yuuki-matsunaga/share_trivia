@@ -94,13 +94,13 @@ ActiveRecord::Schema.define(version: 2021_09_27_113119) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.string "image_id", default: "", null: false
+    t.string "comment", default: "", null: false
+    t.integer "level", default: 1, null: false
+    t.integer "exp", null: false
+    t.boolean "is_active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_id"
-    t.string "comment"
-    t.integer "level", default: 1, null: false
-    t.integer "exp", default: 0, null: false
-    t.boolean "is_active", default: true, null: false
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
