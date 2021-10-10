@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_113119) do
+ActiveRecord::Schema.define(version: 2021_10_10_124733) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 2021_09_27_113119) do
     t.string "image_id", default: "", null: false
     t.string "comment", default: "", null: false
     t.integer "level", default: 1, null: false
-    t.integer "exp", null: false
-    t.boolean "is_active", null: false
+    t.integer "exp", default: 0, null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
