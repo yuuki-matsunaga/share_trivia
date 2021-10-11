@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :genre_id, null: false
       t.string :title, null: false, default: ""
       t.string :image_id, null: false, default: ""
-      t.text :introduction, null: false, default: ""
+      t.text :introduction, null: false
       t.timestamps
     end
   end
