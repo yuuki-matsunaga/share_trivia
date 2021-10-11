@@ -17,19 +17,19 @@
         </tr>
         <tr>
           <th scope="row">イメージ画像</th>
-          <td colspan="4"><%= attachment_image_tag @post, :image, size: "600x600", fallback: "no_image.jpg",class:"post-image" %></td>
+          <td colspan="4"><%= attachment_image_tag @post, :image, size: "637x424", fallback: "no_image.jpg",class:"post-image" %></td>
         </tr>
         <tr>
           <th scope="row">雑学内容</th>
           <td colspan="4"><%= simple_format(@post.introduction) %></td>
         </tr>
-       
+
         <% if user_signed_in? %>
         <!--ログイン確認-->
 
          <th scope="row">雑学内容</th>
           <% if current_user.own?(@post) %> <!--所有を確認-->
-        
+
             <tr>
               <th scope="row col">削除・編集</th>
               <td colspan="2">
