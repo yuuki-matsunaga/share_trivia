@@ -17,22 +17,15 @@
 .tb{
   display: none;
 }
+
 @media screen and (max-width:1440px) {
   .jumbotron-extend {
-    position: relative;
     height: 45vh;
-    background: url(yousyohondana.jpeg) no-repeat bottom center;
   }
 }
 
 
 @media screen and (max-width:1024px) {
-  .jumbotron-extend {
-    position: relative;
-    height: 45vh;
-    background: url(yousyohondana.jpeg) no-repeat bottom center;
-  }
-
   .container-fluid{
     padding-top: 270px;
   }
@@ -50,30 +43,9 @@
     padding-top:20px;
   }
 
-  .tb{
-  display: none;
-  }
 }
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
-@media screen and (max-width:768px) {
-   .jumbotron-extend {
-    position: relative;
-    height: 45vh;
-    background: url(yousyohondana.jpeg) no-repeat bottom center;
-  }
-
-  .container-fluid{
-    padding-top: 270px;
-  }
-
-  .sp{
-    display: none;
-  }
-
-  .about{
-    text-align:justify;
-    padding:20px;
-  }
+@media (max-width:768px) {
 
   .about-title{
     padding-top:10px;
@@ -81,32 +53,6 @@
 
   .tb{
   display: block;
-  }
-
-}
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width:425px) {
-  .jumbotron-extend {
-    position: relative;
-    height: 45vh;
-    background: url(yousyohondana.jpeg) no-repeat bottom center;
-  }
-
-  .container-fluid{
-    padding-top: 270px;
-  }
-
-  .sp{
-    display: none;
-  }
-
-  .about{
-    text-align:justify;
-    padding:20px;
-  }
-
-  .about-title{
-    padding-top:10px;
   }
 
 }
