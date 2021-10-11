@@ -26,8 +26,6 @@
 
         <% if user_signed_in? %>
         <!--ログイン確認-->
-
-         <th scope="row">雑学内容</th>
           <% if current_user.own?(@post) %> <!--所有を確認-->
 
             <tr>
