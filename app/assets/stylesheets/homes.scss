@@ -5,7 +5,9 @@
 .jumbotron-extend {
     position: relative;
     height: 50vh;
-    background: image-url(yousyohondana.jpeg) no-repeat bottom center;
+    background: image-url(yousyohondana.jpeg);
+    background-repeat: no-repeat;
+    background-position: bottom center;
 }
 
 .container-fluid{
