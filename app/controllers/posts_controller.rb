@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def ensure_correct_user
     @post = Post.find_by(id: params[:id])
-    if @post.user_id != current_user
+    if @post.user_id != current_user.id
       redirect_to root_path
     end
   end
