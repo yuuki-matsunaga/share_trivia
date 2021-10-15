@@ -12,13 +12,13 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <%= link_to image_tag("share_trivia_logo.png", class:"navbar-brand ml-5"), "/" %>
+      <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <%= link_to image_tag("share_trivia_logo.png", class:"navbar-brand ml-1"), "/" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon text-right"></span>
         </button>
         <% if user_signed_in? %>
-        <div class="col mr-5">
+        <div class="col mr-1 text-center">
           <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto row">
               <%= link_to attachment_image_tag(current_user, :image, size: "50x50", fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user),class: 'nav-item nav-link' %>

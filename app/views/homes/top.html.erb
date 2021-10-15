@@ -32,11 +32,12 @@
           <td><%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-success col" %></td>
         </tr>
         <tr>
-          <th class="text-right">Google認証する <i class="far fa-hand-point-right"></i></th>
-          <td class="text-center"><%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
-            <i class="fab fa-google"></i>
-          <% end %>
-          </td>
+          <th>Google認証する <i class="far fa-hand-point-right"></i></th>
+          <td class="text-center"><%= link_to "Google認証", user_google_oauth2_omniauth_authorize_path, method: :post,class:"btn btn-outline-danger col" %></td>
+        </tr>
+        <tr>
+          <th>ゲストログイン <i class="far fa-hand-point-right"></i></th>
+          <td><%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post, class:"btn btn-outline-warning col" %></td>
         </tr>
       </table>
     </div>

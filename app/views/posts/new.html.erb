@@ -6,19 +6,19 @@
       <%= message %>
     <% end %>
   <% end %>
-  <div class="row p-5">
-    <div class="col">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
       <%= form_with model: @post,url: posts_path, local:true do |f| %>
-        <label for="title" class="co-2 col-form-label">タイトル</label>
-        <%= f.text_field :title, placeholder:"タイトル", class:"col-8 form-control" %>
-        <label for="introduction" class="co-2 col-form-label">内容</label>
-        <%= f.text_area :introduction,rows: 5, placeholder:"雑学の内容を入力してください", class:"col-8 form-control rows-10" %>
-        <label for="image" class="co-2 col-form-label">イメージ画像</label>
+        <label for="title" class="col col-form-label">タイトル</label>
+        <%= f.text_field :title, placeholder:"タイトル", class:"col form-control" %>
+        <label for="introduction" class="col col-form-label">内容</label>
+        <%= f.text_area :introduction,rows: 5, placeholder:"雑学の内容を入力してください", class:"col form-control rows-10" %>
+        <label for="image" class="col col-form-label">イメージ画像</label>
         <%= f.attachment_field :image, placeholder: "イメージ画像" %><br>
-        <label for="genre" class="co-2 col-form-label">ジャンル</label>
+        <label for="genre" class="col col-form-label">ジャンル</label>
         <%= f.collection_select :genre_id, Genre.all, :id, :name, class:"btn btn-info form-control", prompt: "--選択してください--" %><br>
         <p>ジャンルが無い場合はこちら<%= link_to "ジャンル一覧",genres_path %></p>
-        <%= f.submit '投稿',class:"btn btn-outline-success form-control col-8" %>
+        <%= f.submit '投稿',class:"btn btn-outline-success form-control col" %>
       <% end %>
     </div>
   </div>

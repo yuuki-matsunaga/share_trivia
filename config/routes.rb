@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
   get 'users/confirm' => 'users#confirm'
   patch 'users/withdraw' => 'users#withdraw'
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   #relationships は中間テーブルなので、usersモデルにネストさせる
   resources :users, only: [:index,:show,:edit, :update] do
