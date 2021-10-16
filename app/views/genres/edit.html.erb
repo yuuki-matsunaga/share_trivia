@@ -1,7 +1,7 @@
-<div class="container p-5">
-  <h4 class="p-5">ジャンル編集</h4>
-  <div class="row p-5">
-    <div class="col-6">
+<div class="container p-2">
+  <h4 class="p-2">ジャンル編集</h4>
+  <div class="row p-2">
+    <div class="col text-center">
       <%= form_with model: @genre, url: genre_path(@genre), local:true do |f| %>
         ジャンル名
         <%= f.text_field :name %>
@@ -9,4 +9,7 @@
       <% end %>
     </div>
   </div>
+  <%= link_to 'javascript:history.back()' do %>
+    <button>戻る</button>
+  <% end %>
 </div>
