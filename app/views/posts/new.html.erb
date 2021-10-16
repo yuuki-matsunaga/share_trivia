@@ -14,7 +14,8 @@
         <label for="introduction" class="col col-form-label">内容</label>
         <%= f.text_area :introduction,rows: 5, placeholder:"雑学の内容を入力してください", class:"col form-control rows-10" %>
         <label for="image" class="col col-form-label">イメージ画像</label>
-        <%= f.attachment_field :image, placeholder: "イメージ画像" %><br>
+        <%= f.attachment_field :image, placeholder: "イメージ画像" %>
+        <p>画像を探す場合はこちらから>><%= link_to "ぱくたそへ", "https://www.pakutaso.com/", target: :_blank, rel: "noopener noreferrer" %></p>
         <label for="genre" class="col col-form-label">ジャンル</label>
         <%= f.collection_select :genre_id, Genre.all, :id, :name, class:"btn btn-info form-control", prompt: "--選択してください--" %><br>
         <p>ジャンルが無い場合はこちら<%= link_to "ジャンル一覧",genres_path %></p>
