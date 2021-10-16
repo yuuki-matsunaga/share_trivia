@@ -1,22 +1,22 @@
 <% if @users.exists? %>
-<div class="container p-5">
+<div class="container p-2">
   <div class="row">
     <div class="col">
       <h2>フォロワーリスト</h2>
     </div>
   </div>
-  <div class="row p-5">
+  <div class="row">
     <div class="col">
       <table class="table table-borderless text-center">
-        <thead>
+        <thead class="sp-relationships">
           <tr>
-            <th scope="col-2">ユーザー名</th>
-            <th scope="col-2">レベル</th>
-            <th scope="col-2">投稿数</th>
-            <th scope="col-2">フォロワー数</th>
-            <th scope="col-2">フォロー数</th>
-            <th scope="col-2">フォローする</th>
-            <th scope="col-2">登録状態</th>
+            <th scope="col">ユーザー名</th>
+            <th scope="col">レベル</th>
+            <th scope="col">投稿数</th>
+            <th scope="col">フォロワー数</th>
+            <th scope="col">フォロー数</th>
+            <th scope="col">フォローする</th>
+            <th scope="col">登録状態</th>
           </tr>
         </thead>
         <tbody>
@@ -26,21 +26,23 @@
               <%= attachment_image_tag user, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
               <%= link_to user.name, user_path(user.id) %>
             </td>
-            <td><%= user.level %></td>
-            <td><%= user.posts.count %></td>
-            <td><%= user.followers.count %></td>
-            <td><%= user.followings.count %></td>
-            <td>
-              <% if current_user.following?(user) %>
-                <%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, class: "btn btn-outline-primary" %>
+            <td class="sp-relationships"><%= user.level %></td>
+            <td class="sp-relationships"><%= user.posts.count %></td>
+            <td class="sp-relationships"><%= user.followers.count %></td>
+            <td class="sp-relationships"><%= user.followings.count %></td>
+            <% if signed_in? && @user != current_user %>
+              <% if current_user.following?(@user) %>
+                <td id="follow-button-<%= @user.id %>"><%= render 'relationships/unfollow_button', user: @user %></td>
               <% else %>
-                <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-primary" %>
+               <td id="follow-button-<%= @user.id %>"><%= render 'relationships/follow_button', user: @user %></td>
               <% end %>
-            </td>
+            <% else %>
+              <i class="fas fa-user-alt", style="font-size: 2em;"></i>
+            <% end %>
             <% if user.is_active == true %>
-            <td class="text-success">アクティブ</td>
+            <td class="text-success sp-relationships">アクティブ</td>
              <% else %>
-            <td class="text-danger">退会済</td>
+            <td class="text-danger sp-relationships">退会済</td>
             <% end %>
             <td>
           </tr>
