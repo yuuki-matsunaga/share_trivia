@@ -30,11 +30,11 @@
             <td class="sp-relationships"><%= user.posts.count %></td>
             <td class="sp-relationships"><%= user.followers.count %></td>
             <td class="sp-relationships"><%= user.followings.count %></td>
-            <% if signed_in? && @user != current_user %>
-              <% if current_user.following?(@user) %>
-                <td id="follow-button-<%= @user.id %>"><%= render 'relationships/unfollow_button', user: @user %></td>
+            <% if signed_in? && user != current_user %>
+              <% if current_user.following?(user) %>
+                <td id="follow-button-<%= user.id %>"><%= render 'relationships/unfollow_button', user: user %></td>
               <% else %>
-                <td id="follow-button-<%= @user.id %>"><%= render 'relationships/follow_button', user: @user %></td>
+                <td id="follow-button-<%= user.id %>"><%= render 'relationships/follow_button', user: user %></td>
               <% end %>
             <% else %>
               <td><i class="fas fa-user-alt", style="font-size: 2em;"></i></td>
