@@ -2,9 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @media screen and (max-width:425px) {
-  td,
-  head,
   .sp-relationships{
-    display: none;
+    display: none !important;
   }
 }
