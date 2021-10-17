@@ -40,7 +40,7 @@
 
 @media screen and (max-width:425px) {
   .row-table{
-    maw-width: 100%;
+    max-width: 100%;
   }
   .post-image{
     width: 100%;
@@ -67,14 +67,6 @@
 
 
 @media screen and (max-width:425px) {
-  .column-table,
-  .column-table td,
-  .column-table th {
-    // border: 1px solid #cbced2;
-    // border-collapse: collapse;
-    text-align: center;
-  }
-
   .column-table thead th {
     display: none;
   }
@@ -86,8 +78,6 @@
   }
 
   .column-table td[data-title]::before {
-    // background-color:white;
-    // color: #666;
     content: attr(data-title) " :";
     font-weight: bold;
     padding: 0 10px 0 0;
