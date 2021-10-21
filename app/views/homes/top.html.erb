@@ -1,46 +1,46 @@
 <div class="jumbotron jumbotron-extend">
-  <div class="container-fluid row">
-    <div class="about col-md-6 text-bold">
-      <h2 class="about-title">Share Triviaへ<br class="tb">ようこそ<span><i class="fas fa-book-reader"></i></span></h2>
-      <p>Share Triviaは雑学の共有をするアプリです。<br class="sp">
-        雑学を投稿することで経験値が貯まり、レベルアップすることができます。<br class="sp">
-        このアプリを通して学んだ雑学を周りの人たちとのコミュニケーションに<br class="sp">
-        役立てていただけたら幸いです。</p>
-    </div>
-    <% if user_signed_in? %>
-    <p class="col-md-3 d-flex align-items-center">お帰りなさい！<br><%= current_user.name %>さん！</p>
-    <table class="col-md-3 table-borderless">
+</div>
+<div class="container row col mx-auto">
+  <div class="about col-md-6 text-bold">
+    <h2 class="about-title">Share Triviaへ<br>ようこそ<span><i class="fas fa-book-reader"></i></span></h2>
+    <p>Share Triviaは雑学の共有をするアプリです。<br class="sp">
+      雑学を投稿することで経験値が貯まり、レベルアップすることができます。<br class="sp">
+      このアプリを通して学んだ雑学を周りの人たちとのコミュニケーションに<br class="sp">
+      役立てていただけたら幸いです。</p>
+  </div>
+  <% if user_signed_in? %>
+  <p class="col-md-3 d-flex align-items-center">お帰りなさい！<br><%= current_user.name %>さん！</p>
+  <table class="col-md-3 table-borderless">
+    <tr>
+      <th>マイページへ <i class="far fa-hand-point-right"></i></th>
+      <td><%= link_to attachment_image_tag(current_user, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user)%></td>
+    </tr>
+    <tr>
+      <th>雑学を探そう <i class="far fa-hand-point-right"></i></th>
+      <td><%= link_to image_tag("dash.jpeg",size: "100x100", class:"rounded-circle m-2 border"), posts_path %></td>
+    </tr>
+  </table>
+
+  <% else %>
+  <div class="col p-4">
+    <table class="table-borderless">
       <tr>
-        <th>マイページへ <i class="far fa-hand-point-right"></i></th>
-        <td><%= link_to attachment_image_tag(current_user, :image, :fill, 100, 100, fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user)%></td>
+        <th>新規登録はこちら <i class="far fa-hand-point-right"></i></th>
+        <td><%= link_to "新規登録", new_user_registration_path, class:"btn btn-outline-primary col" %></td>
       </tr>
       <tr>
-        <th>雑学を探そう <i class="far fa-hand-point-right"></i></th>
-        <td><%= link_to image_tag("dash.jpeg",size: "100x100", class:"rounded-circle m-2 border"), posts_path %></td>
+        <th>ログインはこちら <i class="far fa-hand-point-right"></i></th>
+        <td><%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-success col" %></td>
+      </tr>
+      <tr>
+        <th>Google認証する <i class="far fa-hand-point-right"></i></th>
+        <td class="text-center"><%= link_to "Google認証", user_google_oauth2_omniauth_authorize_path, method: :post,class:"btn btn-outline-danger col" %></td>
+      </tr>
+      <tr>
+        <th>ゲストログイン <i class="far fa-hand-point-right"></i></th>
+        <td><%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post, class:"btn btn-outline-warning col" %></td>
       </tr>
     </table>
-
-    <% else %>
-    <div class="col p-4">
-      <table class="table-borderless">
-        <tr>
-          <th>新規登録はこちら <i class="far fa-hand-point-right"></i></th>
-          <td><%= link_to "新規登録", new_user_registration_path, class:"btn btn-outline-primary col" %></td>
-        </tr>
-        <tr>
-          <th>ログインはこちら <i class="far fa-hand-point-right"></i></th>
-          <td><%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-success col" %></td>
-        </tr>
-        <tr>
-          <th>Google認証する <i class="far fa-hand-point-right"></i></th>
-          <td class="text-center"><%= link_to "Google認証", user_google_oauth2_omniauth_authorize_path, method: :post,class:"btn btn-outline-danger col" %></td>
-        </tr>
-        <tr>
-          <th>ゲストログイン <i class="far fa-hand-point-right"></i></th>
-          <td><%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post, class:"btn btn-outline-warning col" %></td>
-        </tr>
-      </table>
-    </div>
-    <% end %>
   </div>
+  <% end %>
 </div>

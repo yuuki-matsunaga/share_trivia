@@ -6,53 +6,6 @@
     position: relative;
     height: 45vh;
     background-image: image-url("yousyohondana.jpeg");
-    background-repeat: no-repeat;
+    background-size: cover;
     background-position: bottom center;
-}
-
-.container-fluid{
-  padding-top: 360px;
-}
-
-.tb{
-  display: none;
-}
-
-@media screen and (max-width:1440px) {
-  .jumbotron-extend {
-    height: 45vh;
-  }
-}
-
-
-@media screen and (max-width:1024px) {
-  .container-fluid{
-    padding-top: 270px;
-  }
-
-  .sp{
-    display: none;
-  }
-
-  .about{
-    text-align:justify;
-    padding:20px;
-  }
-
-  .about-title{
-    padding-top:20px;
-  }
-
-}
-/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
-@media (max-width:768px) {
-
-  .about-title{
-    padding-top:12px;
-  }
-
-  .tb{
-  display: block;
-  }
-
 }
