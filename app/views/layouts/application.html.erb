@@ -64,7 +64,7 @@
       </nav>
     </header>
     <%= yield %>
-    <footer class="bg-light">
+    <footer>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
         <% if user_signed_in? %>
           <%= link_to attachment_image_tag(current_user, :image, size: "50x50", fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user),class: 'nav-item nav-link' %>
