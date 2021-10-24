@@ -21,13 +21,11 @@
 
 @media screen and (max-width:425px) {
   .row_table,.row_table td,.row_table th {
-  // border: 1px solid #ddd;
   border-collapse: collapse;
   text-align: center;
 }
 
   .row_table th {
-    // border: 1px solid #ddd;
     padding: 4px 12px;
     display: none;
     width: 100%
@@ -61,29 +59,10 @@
 
 //indexページのレスポンシブ
 
-@media screen and (min-width:768px) {
-
-    tbody tr{
-      display: table-row;
-
-    }
-    tbody th,
-    tbody td{
-      display: table-cell;
-    }
-    th {
-      width: auto;
-    }
-}
-
-
-
 @media screen and (max-width:425px) {
   .column_table,
   .column_table td,
   .column_table th {
-    // border: 1px solid #cbced2;
-    // border-collapse: collapse;
     text-align: center;
   }
 
@@ -115,5 +94,8 @@
     max-width: 100%;
     height: auto;
   }
-
+  
+  .sp-th{
+    
+  }
 }

@@ -14,13 +14,13 @@
     <header>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
         <%= link_to image_tag("share_trivia_logo.png", class:"navbar-brand ml-1"), "/" %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="pc-nav navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon text-right"></span>
         </button>
         <% if user_signed_in? %>
-        <div class="col mr-1 text-center">
-          <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto row">
+        <div class="col mr-1 text-center pc-nav">
+          <div class="collapse navbar-collapse pc-nav" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto row pc-nav">
               <%= link_to attachment_image_tag(current_user, :image, size: "50x50", fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user),class: 'nav-item nav-link' %>
               <%= link_to notifications_path, class: "nav-item nav-link pt-3 m-2" do %>
                 <% if unchecked_notifications.any? %>
@@ -64,5 +64,42 @@
       </nav>
     </header>
     <%= yield %>
+    <footer class="bg-light">
+      <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <% if user_signed_in? %>
+          <%= link_to attachment_image_tag(current_user, :image, size: "50x50", fallback: "no_image.jpg", class:"rounded-circle m-2"), user_path(current_user),class: 'nav-item nav-link' %>
+          <%= link_to notifications_path, class: "nav-item nav-link pt-3" do %>
+          <% if unchecked_notifications.any? %>
+            <span class="fa-stack">
+              <i class="far fa-bell fa-lg fa-stack-2x"></i>
+              <i class="fas fa-circle n-circle fa-stack-1x"></i>
+            </span>
+          <% else %>
+            <i class="far fa-bell fa-lg", style="font-size: 2em;"></i>
+          <% end %>
+          <% end %>
+          <%= link_to new_post_path,class: 'nav-item nav-link' do %>
+          <i class="fas fa-share-square", style="font-size: 2em;"></i>
+          <% end %>
+          <%= link_to users_path, class: "nav-item nav-link" do %>
+          <i class="fas fa-users", style="font-size: 2em;"></i>
+          <% end %>
+          <%= link_to posts_path,class: "nav-item nav-link" do %>
+          <i class="fas fa-book-open", style="font-size: 2em;"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete,class: 'nav-item nav-link' do %>
+          <i class="fas fa-sign-out-alt", style="font-size: 2em;"></i>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_registration_path, class:'nav-item nav-link p-3' do %>
+          <i class="fas fa-user-plus", style="font-size: 2em;"></i>
+          <% end %>
+          <%= link_to new_user_session_path, class:'nav-item nav-link p-3' do %>
+          <i class="fas fa-sign-in-alt", style="font-size: 2em;"></i>
+          <% end %>
+        <% end %>
+      </div>
+      </nav>
+    </footer>
   </body>
 </html>
