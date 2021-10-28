@@ -67,8 +67,8 @@
     <footer>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
         <% if user_signed_in? %>
-          <%= link_to attachment_image_tag(current_user, :image, size: "50x50", fallback: "no_image.jpg", class:"rounded-circle"), user_path(current_user),class: 'nav-item nav-link' %>
-          <%= link_to notifications_path, class: "nav-item nav-link pt-3" do %>
+          <%= link_to attachment_image_tag(current_user, :image, size: "50x50", fallback: "no_image.jpg", class:"rounded-circle"), user_path(current_user),class: 'nav-item nav-link p-0' %>
+          <%= link_to notifications_path, class: "nav-item nav-link p-0 pt-3" do %>
           <% if unchecked_notifications.any? %>
             <span class="fa-stack">
               <i class="far fa-bell fa-lg fa-stack-2x"></i>
@@ -78,16 +78,16 @@
             <i class="far fa-bell fa-lg", style="font-size: 2em;"></i>
           <% end %>
           <% end %>
-          <%= link_to new_post_path,class: 'nav-item nav-link' do %>
+          <%= link_to new_post_path,class: 'nav-item nav-link p-0' do %>
           <i class="fas fa-share-square", style="font-size: 2em;"></i>
           <% end %>
-          <%= link_to users_path, class: "nav-item nav-link" do %>
+          <%= link_to users_path, class: "nav-item nav-link p-0" do %>
           <i class="fas fa-users", style="font-size: 2em;"></i>
           <% end %>
-          <%= link_to posts_path,class: "nav-item nav-link" do %>
+          <%= link_to posts_path,class: "nav-item nav-link p-0" do %>
           <i class="fas fa-book-open", style="font-size: 2em;"></i>
           <% end %>
-          <%= link_to destroy_user_session_path, method: :delete,class: 'nav-item nav-link' do %>
+          <%= link_to destroy_user_session_path, method: :delete,class: 'nav-item nav-link p-0' do %>
           <i class="fas fa-sign-out-alt", style="font-size: 2em;"></i>
           <% end %>
         <% else %>
