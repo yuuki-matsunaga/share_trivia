@@ -22,12 +22,14 @@
   color: #efa04c;
 }
 
-.sp-nav{
- display: none !important;
-}
+@media screen and (min-width:426px) {
+ .sp-nav{
+  display: none !important;
+ }
 
-footer{
- display: none !important;
+ footer{
+  display: none !important;
+ }
 }
 
 @media screen and (max-width:425px) {
