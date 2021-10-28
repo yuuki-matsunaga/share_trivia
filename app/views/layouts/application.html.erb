@@ -13,7 +13,7 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <%= link_to image_tag("share_trivia_logo.png", class:"navbar-brand ml-1"), "/" %>
+        <%= link_to image_tag("share_trivia_logo.png", class:"header-rogo navbar-brand ml-1"), "/" %>
         <button class="pc-nav navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon text-right"></span>
         </button>
@@ -47,7 +47,7 @@
             </div>
           </div>
         <% else %>
-        <div class="col mr-5">
+        <div class="col mr-5 pc-nav">
           <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto row">
               <%= link_to new_user_registration_path, class:'nav-item nav-link m-2' do %>

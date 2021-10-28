@@ -22,14 +22,17 @@
   color: #efa04c;
 }
 
-.sp-nav,
+.sp-nav{
+ display: none !important;
+}
+
 footer{
- display: none;
+ display: none !important;
 }
 
 @media screen and (max-width: 425px) {
  .pc-nav{
-  display: none;
+  display: none !important;
  }
 
  body{
@@ -47,7 +50,7 @@ footer{
   height: 80px;
  }
 
- .nav-link {
+ .nav-link{
   color: rgba(0, 0, 0, 0.5);
   padding: 0;
  }
